@@ -1,0 +1,9 @@
+/* 全局默认鼠标光标 */
+body, html {
+  cursor: url('https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/img/cursor/default.cur'), default !important;
+}
+
+/* 鼠标悬停在链接、按钮、可点击元素上时的光标 */
+a, button, [role="button"], .pointer {
+  cursor: url('https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/img/cursor/pointer.cur'), pointer !important;
+}
