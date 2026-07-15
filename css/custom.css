@@ -1,9 +1,24 @@
-/* 全局默认鼠标光标 */
+/* ============================================================ */
+/* 1. 默认状态下的光标（现成的：精美黑白小猫咪手绘指针） */
+/* ============================================================ */
 body, html {
-  cursor: url('https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/img/cursor/default.cur'), default !important;
+  cursor: url('https://cos.shizuri.net/cur/default.cur'), default !important;
 }
 
-/* 鼠标悬停在链接、按钮、可点击元素上时的光标 */
-a, button, [role="button"], .pointer {
-  cursor: url('https://cdn.jsdelivr.net/gh/xaoxuu/cdn-assets/img/cursor/pointer.cur'), pointer !important;
+/* ============================================================ */
+/* 2. 悬停在链接/按钮上的光标（现成的：精美粉色点赞手势） */
+/* ============================================================ */
+a, 
+button, 
+[role="button"], 
+.pointer,
+.nav-link, 
+.navbar-brand, 
+.post-title a, 
+.post-meta a, 
+.post-content a, 
+.btn, 
+a *, 
+button * {
+  cursor: url('https://cos.shizuri.net/cur/pointer.cur'), pointer !important;
 }
