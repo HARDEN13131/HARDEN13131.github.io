@@ -27,7 +27,7 @@
 <meta property="og:description" content="引言：为什么我们要学习“双向攻防”？在网络安全行业中，“不懂防守的黑客成不了大师，不懂攻击的安全官无法保护企业。”  今天，我亲自在一台作为攻击机的 Kali Linux 和一台作为靶机的 Linux Mint 主机之间，完成了一次从端口扫描、SSH 爆破登录、本地提权，到防守方日志审计、网络连接排查、最终精准 Kill 进程反制的闭环实战。 本文将以“红蓝对抗”的双视角，带大家沉浸式还原整场博弈">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-07-15T08:27:52.000Z">
-<meta property="article:modified_time" content="2026-07-15T08:54:13.694Z">
+<meta property="article:modified_time" content="2026-07-16T07:45:09.498Z">
 <meta property="article:author" content="Harden">
 <meta property="article:tag" content="网络安全 Linux 安全防护">
 <meta name="twitter:card" content="summary_large_image">
@@ -429,26 +429,21 @@
 <hr>
 <h3 id="0x02-应急排查：还原黑客攻击链路"><a href="#0x02-应急排查：还原黑客攻击链路" class="headerlink" title="0x02 应急排查：还原黑客攻击链路"></a>0x02 应急排查：还原黑客攻击链路</h3><p>黑客以为自己神不知鬼不觉，但在 Linux 主机的底层日志里，其实早已留下了无法抹除的指纹。</p>
 <h3 id="1-入侵源头审计：安全日志分析（Auth-Log）"><a href="#1-入侵源头审计：安全日志分析（Auth-Log）" class="headerlink" title="1. 入侵源头审计：安全日志分析（Auth Log）"></a>1. 入侵源头审计：安全日志分析（Auth Log）</h3><p>首先，蓝队必须找到黑客是如何进来的。我们直接调取系统的安全日志 <code>auth.log</code>：</p>
-<pre><code class="bash">## 过滤 SSH 相关安全日志
-sudo grep &quot;sshd&quot; /var/log/auth.log | tail -n 20
-## 过滤 Sudo 提权日志
-sudo grep &quot;sudo&quot; /var/log/auth.log | tail -n 15
-## 普通权限查询（错误示范）
-ss -antp | grep 22
-由于没有管理员权限，系统为了安全会隐藏关键信息。输出结果里只会显示连接，而最后一列的 PID（进程ID）会被隐藏（留空），导致我们无法锁定内鬼进程。
-## 正确排查命令
-sudo ss -antp | grep 22
-## 区分连接状态（ESTAB vs LISTEN）
-1. LISTEN 状态：代表本机的 SSH 守护进程正在监听（如 0.0.0.0:22）。绝对不能杀，否则整个 SSH 服务将瘫痪，后续管理员也无法登录。
-2. ESTAB 状态：代表已经建立的活动连接。（establish）
-3. 最后：在输出的 ESTAB 这一行中，我们成功抓到了指向 192.168.249.129:39929（黑客 IP）的活动连接，并在最后一列精准定位到了黑客会话的进程 ID（PID）
-## 强行杀死属于黑客连接的特定进程
-sudo kill -9 3161
-
-##返回检查一下有没有成功
-1. 可以直接在Linux mint里面 sudo ss -antp | grep 22 看是否还有ESTAB
-2. 在kali里面 会有 [*] 192.168.249.128 - SSH session 1 closed. Reason: Died
-</code></pre>
+<h2 id="过滤-SSH-相关安全日志"><a href="#过滤-SSH-相关安全日志" class="headerlink" title="过滤 SSH 相关安全日志"></a>过滤 SSH 相关安全日志</h2><p>sudo grep “sshd” &#x2F;var&#x2F;log&#x2F;auth.log | tail -n 20</p>
+<h2 id="过滤-Sudo-提权日志"><a href="#过滤-Sudo-提权日志" class="headerlink" title="过滤 Sudo 提权日志"></a>过滤 Sudo 提权日志</h2><p>sudo grep “sudo” &#x2F;var&#x2F;log&#x2F;auth.log | tail -n 15</p>
+<h2 id="普通权限查询（错误示范）"><a href="#普通权限查询（错误示范）" class="headerlink" title="普通权限查询（错误示范）"></a>普通权限查询（错误示范）</h2><p>ss -antp | grep 22<br>由于没有管理员权限，系统为了安全会隐藏关键信息。输出结果里只会显示连接，而最后一列的 PID（进程ID）会被隐藏（留空），导致我们无法锁定内鬼进程。</p>
+<h2 id="正确排查命令"><a href="#正确排查命令" class="headerlink" title="正确排查命令"></a>正确排查命令</h2><p>sudo ss -antp | grep 22</p>
+<h2 id="区分连接状态（ESTAB-vs-LISTEN）"><a href="#区分连接状态（ESTAB-vs-LISTEN）" class="headerlink" title="区分连接状态（ESTAB vs LISTEN）"></a>区分连接状态（ESTAB vs LISTEN）</h2><ol>
+<li>LISTEN 状态：代表本机的 SSH 守护进程正在监听（如 0.0.0.0:22）。绝对不能杀，否则整个 SSH 服务将瘫痪，后续管理员也无法登录。</li>
+<li>ESTAB 状态：代表已经建立的活动连接。（establish）</li>
+<li>最后：在输出的 ESTAB 这一行中，我们成功抓到了指向 192.168.249.129:39929（黑客 IP）的活动连接，并在最后一列精准定位到了黑客会话的进程 ID（PID）</li>
+</ol>
+<h2 id="强行杀死属于黑客连接的特定进程"><a href="#强行杀死属于黑客连接的特定进程" class="headerlink" title="强行杀死属于黑客连接的特定进程"></a>强行杀死属于黑客连接的特定进程</h2><p>sudo kill -9 3161</p>
+<p>##返回检查一下有没有成功</p>
+<ol>
+<li>可以直接在Linux mint里面 sudo ss -antp | grep 22 看是否还有ESTAB</li>
+<li>在kali里面 会有 [*] 192.168.249.128 - SSH session 1 closed. Reason: Died</li>
+</ol>
 
                 
               </div>
