@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>学习MARKDOWN语法（一）</title>
+    <link href="/2026/07/16/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
+    <url>/2026/07/16/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="两个空格换行"><a href="#两个空格换行" class="headerlink" title="两个空格换行"></a>两个空格换行</h2><p>正常写的话1<br>1换行只有一个空格<br><strong>在末尾加上两个空格就可以啦！</strong>（就像这样子）</p><h2 id="斜体和加粗"><a href="#斜体和加粗" class="headerlink" title="斜体和加粗"></a>斜体和加粗</h2><blockquote><p><code>*打*</code><br> <em>打</em></p></blockquote><blockquote><p><code>**好**</code><br> <strong>好</strong></p></blockquote><h2 id="横线去除号"><a href="#横线去除号" class="headerlink" title="横线去除号"></a>横线去除号</h2><blockquote><p><code>~~99.9~~</code><br> <del>99.9</del>  </p></blockquote><p><strong>甚至你可以混着用</strong><br>EG:<strong><del>100</del></strong><br>很神奇吧.(doge)</p><hr><h2 id="分割线的使用"><a href="#分割线的使用" class="headerlink" title="分割线的使用"></a>分割线的使用</h2><blockquote><p><code>***</code>  </p></blockquote><p><em><strong>例子就在上面,哈哈哈嘿嘿嘿</strong></em></p><h2 id="有序、无序列表和勾选框"><a href="#有序、无序列表和勾选框" class="headerlink" title="有序、无序列表和勾选框"></a>有序、无序列表和勾选框</h2><h3 id="有序表"><a href="#有序表" class="headerlink" title="有序表"></a>有序表</h3><ol><li>一级列表 <ul><li>二级列表  </li><li>第二个  <ul><li>三级列表<ul><li>四级列表</li></ul></li></ul></li></ul></li><li></li><li></li></ol><p><strong>结束有序表使用两个换行</strong><br><strong>使用下一级的列表,用TAB键即可</strong>  </p><h3 id="无序表"><a href="#无序表" class="headerlink" title="无序表"></a>无序表</h3><ul><li>第一个任务</li><li>第二个任务</li><li>第三个任务<blockquote><p><code>* [x] </code> 会呈现✔<br><code>* [ ] </code> 会呈现空着的</p></blockquote></li></ul><ul><li><input checked="" disabled="" type="checkbox"> 我是完成的任务</li><li><input disabled="" type="checkbox"> 第四个任务</li></ul><h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 打印经典的一句话</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure><p>TIPS:  </p><ol><li>在末尾记得加上&#96;&#96;&#96;</li><li>在开头的&#96;&#96;&#96;后面可以加上对应的语言名称  </li><li><code>equal()</code>这里用到了&#96;&#96; 也可以是代码段的一种情况</li></ol><hr><h1 id="今天是第一天，一定要坚持下去哦，呵呵呵哒"><a href="#今天是第一天，一定要坚持下去哦，呵呵呵哒" class="headerlink" title="今天是第一天，一定要坚持下去哦，呵呵呵哒"></a>今天是第一天，一定要坚持下去哦，呵呵呵哒</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Markdown</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>知攻方能知防：从 Kali 渗透到 Linux Mint 本地安全反制（附日志分析）</title>
     <link href="/2026/07/15/%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%EF%BC%9A%E4%BB%8E-Kali-%E6%B8%97%E9%80%8F%E5%88%B0-Linux-Mint-%E6%9C%AC%E5%9C%B0%E5%AE%89%E5%85%A8%E5%8F%8D%E5%88%B6%EF%BC%88%E9%99%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%EF%BC%89/"/>
     <url>/2026/07/15/%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%EF%BC%9A%E4%BB%8E-Kali-%E6%B8%97%E9%80%8F%E5%88%B0-Linux-Mint-%E6%9C%AC%E5%9C%B0%E5%AE%89%E5%85%A8%E5%8F%8D%E5%88%B6%EF%BC%88%E9%99%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%EF%BC%89/</url>
