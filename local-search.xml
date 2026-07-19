@@ -4,6 +4,44 @@
   
   
   <entry>
+    <title>对知攻方能知防的进一步学习</title>
+    <link href="/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/"/>
+    <url>/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路<br>于是展开了今天的学习  </p><h2 id="🚀-第一步：准备战场（安装-Fail2ban）"><a href="#🚀-第一步：准备战场（安装-Fail2ban）" class="headerlink" title="🚀 第一步：准备战场（安装 Fail2ban）"></a>🚀 第一步：准备战场（安装 Fail2ban）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 更新软件源</span><br><span class="hljs-built_in">sudo</span> apt update<br><br><span class="hljs-comment"># 2. 安装 fail2ban</span><br><span class="hljs-built_in">sudo</span> apt install fail2ban -y<br></code></pre></td></tr></table></figure><p><strong>安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:</strong></p><blockquote><p>sudo systemctl status fail2ban</p><p>如果看到绿色的 active (running)，说明它已经开始值班了！</p></blockquote><h2 id="🛠️-第二步：配置小黑屋规则（Jail-配置）"><a href="#🛠️-第二步：配置小黑屋规则（Jail-配置）" class="headerlink" title="🛠️ 第二步：配置小黑屋规则（Jail 配置）"></a>🛠️ 第二步：配置小黑屋规则（Jail 配置）</h2><p><strong>Fail2ban 默认有一套规则，但为了配合我们昨天的红蓝对抗演练，我们要亲手给它写一个“只要 Kali 爆破超过 3 次就立刻封禁”的硬核规则。</strong>  </p><ol><li>在 Mint 终端里，使用纳米编辑器（nano）创建一个属于我们自己的配置文件：<blockquote><p>sudo nano &#x2F;etc&#x2F;fail2ban&#x2F;jail.local</p></blockquote></li><li>把下面这段配置直接复制粘贴进去：<blockquote><p>[sshd]<br>enabled &#x3D; true<br>port    &#x3D; ssh<br>logpath &#x3D; %(sshd_log)s<br>backend &#x3D; %(sshd_backend)s</p></blockquote></li></ol><p>#最大失败次数：3次<br>maxretry &#x3D; 3<br>#封禁时间：600秒（10分钟）<br>bantime  &#x3D; 600<br>#统计失败次数的窗口期：10分钟内失败3次就封<br>findtime &#x3D; 600<br>3. 保存并退出<br>4. 让配置生效：重启一下 Fail2ban 服务：</p><blockquote><p>sudo systemctl restart fail2ban</p></blockquote><h2 id="🥷-第三步：攻防测试（让-Kali-再次发起进攻！）"><a href="#🥷-第三步：攻防测试（让-Kali-再次发起进攻！）" class="headerlink" title="🥷 第三步：攻防测试（让 Kali 再次发起进攻！）"></a>🥷 第三步：攻防测试（让 Kali 再次发起进攻！）</h2><p><strong>像昨天一样，再次对 Mint 发起 SSH 爆破或者直接故意输错密码登录</strong><br><img src="/image-2.png" alt="alt text"><br> 在三次错误后就会被<code>permission denied</code></p><h2 id="🛡️-第四步：切回蓝队（Mint），查看战果"><a href="#🛡️-第四步：切回蓝队（Mint），查看战果" class="headerlink" title="🛡️ 第四步：切回蓝队（Mint），查看战果"></a>🛡️ 第四步：切回蓝队（Mint），查看战果</h2><p> 当你在 Kali 端被成功拦截后，切回你的 Linux Mint 终端，输入以下命令让 Fail2ban 保安汇报战绩  </p><blockquote><p>sudo fail2ban-client status sshd  </p></blockquote><p> 看到输出里有一行叫 <code>Banned IP list</code>后面会清清楚楚地列着你 Kali 的 IP 地址<br><img src="/image-1.png" alt="alt text"></p><h2 id="第五步：研究背后的原理（防止变成脚本小子doge）"><a href="#第五步：研究背后的原理（防止变成脚本小子doge）" class="headerlink" title="第五步：研究背后的原理（防止变成脚本小子doge）"></a>第五步：研究背后的原理（防止变成脚本小子doge）</h2><h3 id="fb2本质"><a href="#fb2本质" class="headerlink" title="fb2本质"></a>fb2本质</h3><p> Fail2ban 本质上是一个运行在 Linux 应用层的 Python 程序。它平时不做别的，就死死盯着你指定的日志文件（比如 &#x2F;var&#x2F;log&#x2F;auth.log）</p><h3 id="整个流程"><a href="#整个流程" class="headerlink" title="整个流程"></a>整个流程</h3><p> <strong>盯梢 $\rightarrow$ 判刑 $\rightarrow$ 行刑</strong>  </p><ol><li>盯梢（应用层日志审计）  <blockquote><p>当黑客在 Kali 端尝试 SSH 登录失败时，Linux 的 SSH 服务（sshd）就会在日志里写下一行：<br>Jul 19 15:30:00 panda-vm sshd[2888]: Failed password for panda from 192.168.249.129 port 39929 ssh2</p></blockquote></li></ol><p><strong>Fail2ban 内部有一套 正则表达式（Filter）</strong>  </p><blockquote><p>当它扫描到这行日志时，匹配到了 Failed password 和 IP 192.168.249.129，它的内部计数器就会给这个 IP 默默地记上一次<br>2. 判刑（触发 Jail 阈值）<br>当你在配置文件 jail.local 里设置了 <strong>maxretry &#x3D; 3</strong>，意味着只要在 findtime（10分钟）内，同一个 IP 触发了 3 次这样的日志，Fail2ban 的控制核心就会发出警报<br>这时，Fail2ban 会根据你系统里的防火墙类型，自动生成一条只有计算机才能看懂的底层防火墙命令。<br>3. 行刑（深入 Linux 内核的 Netfilter）<br>   <img src="/image.png" alt="alt text"><br>   在这里面发现了 <strong>只要访问目标端口是 22（SSH），并且它的源 IP 在上面那个名单簿里，通通拒绝（reject）</strong><code>tcp dport 22 ip saddr @addr-set-sshd reject</code></p></blockquote><hr><h1 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h1>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Linux 网络安全</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>学习MARKDOWN语法（二）</title>
+    <link href="/2026/07/17/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/"/>
+    <url>/2026/07/17/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    
+    <content type="html"><![CDATA[<h2 id="超链接的插入"><a href="#超链接的插入" class="headerlink" title="超链接的插入"></a>超链接的插入</h2><blockquote><p><code>请登录我们的[官网](https://harden13131.github.io)</code><br> 请登录我们的<a href="https://harden13131.github.io/">官网</a>   </p></blockquote><h3 id="另外的一种办法"><a href="#另外的一种办法" class="headerlink" title="另外的一种办法"></a>另外的一种办法</h3><p>把官网后面的（a）,对a进行变量的定义</p><blockquote><p> <a href="https://www.bilibili.com/">视频链接</a></p></blockquote><blockquote><p>会自动跳转到某个网址</p></blockquote><h3 id="脚注"><a href="#脚注" class="headerlink" title="脚注"></a>脚注</h3><blockquote><p> 官网<sup id="fnref:1" class="footnote-ref"><a href="#fn:1" rel="footnote"><span class="hint--top hint--rounded" aria-label="d">[1]</span></a></sup>  </p></blockquote><h2 id="图片的插入"><a href="#图片的插入" class="headerlink" title="图片的插入"></a>图片的插入</h2><blockquote><p><img src="/img/test.jpg" alt="图片"><br><code>![图片](/img/test.jpg)</code></p></blockquote><section class="footnotes"><div class="footnote-list"><ol><li><span id="fn:1" class="footnote-text"><span>d<a href="#fnref:1" rev="footnote" class="footnote-backref"> ↩</a></span></span></li></ol></div></section>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>Markdown</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>学习MARKDOWN语法（一）</title>
     <link href="/2026/07/16/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/"/>
     <url>/2026/07/16/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/</url>

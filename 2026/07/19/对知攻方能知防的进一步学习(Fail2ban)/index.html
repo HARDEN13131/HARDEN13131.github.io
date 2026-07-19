@@ -19,24 +19,28 @@
   <meta name="author" content="Harden">
   <meta name="keywords" content="">
   
-    <meta name="description" content="基础语法两个空格换行正常写的话11换行只有一个空格在末尾加上两个空格就可以啦！（就像这样子） 斜体和加粗 *打* 打   **好** 好  横线去除号 ~~99.9~~ 99.9    甚至你可以混着用EG:100很神奇吧.(doge)  分割线的使用 ***    例子就在上面,哈哈哈嘿嘿嘿 有序、无序列表和勾选框有序表 一级列表  二级列表   第二个   三级列表 四级列表">
+    <meta name="description" content="前言在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路于是展开了今天的学习   🚀 第一步：准备战场（安装 Fail2ban）12345# 1. 更新软件源sudo apt update# 2. 安装 fail2bansudo apt install fail2ban -y 安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:  sudo syst">
 <meta property="og:type" content="article">
-<meta property="og:title" content="学习MARKDOWN语法（一）">
-<meta property="og:url" content="https://harden13131.github.io/2026/07/16/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:title" content="对知攻方能知防的进一步学习">
+<meta property="og:url" content="https://harden13131.github.io/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/index.html">
 <meta property="og:site_name" content="Harden的个人博客">
-<meta property="og:description" content="基础语法两个空格换行正常写的话11换行只有一个空格在末尾加上两个空格就可以啦！（就像这样子） 斜体和加粗 *打* 打   **好** 好  横线去除号 ~~99.9~~ 99.9    甚至你可以混着用EG:100很神奇吧.(doge)  分割线的使用 ***    例子就在上面,哈哈哈嘿嘿嘿 有序、无序列表和勾选框有序表 一级列表  二级列表   第二个   三级列表 四级列表">
+<meta property="og:description" content="前言在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路于是展开了今天的学习   🚀 第一步：准备战场（安装 Fail2ban）12345# 1. 更新软件源sudo apt update# 2. 安装 fail2bansudo apt install fail2ban -y 安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:  sudo syst">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-07-16T05:26:59.000Z">
-<meta property="article:modified_time" content="2026-07-16T07:39:11.939Z">
+<meta property="og:image" content="https://harden13131.github.io/image-2.png">
+<meta property="og:image" content="https://harden13131.github.io/image-1.png">
+<meta property="og:image" content="https://harden13131.github.io/image.png">
+<meta property="article:published_time" content="2026-07-19T07:38:57.000Z">
+<meta property="article:modified_time" content="2026-07-19T08:30:14.494Z">
 <meta property="article:author" content="Harden">
-<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="Linux 网络安全">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://harden13131.github.io/image-2.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>学习MARKDOWN语法（一） - Harden的个人博客</title>
+  <title>对知攻方能知防的进一步学习 - Harden的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -329,7 +333,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="学习MARKDOWN语法（一）"></span>
+            <span id="subtitle" data-typed-text="对知攻方能知防的进一步学习"></span>
           
         </div>
 
@@ -340,8 +344,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-07-16 13:26" pubdate>
-          2026年7月16日 下午
+        <time datetime="2026-07-19 15:38" pubdate>
+          2026年7月19日 下午
         </time>
       </span>
     
@@ -352,7 +356,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          452 字
+          1.6k 字
         
       </span>
     
@@ -363,7 +367,7 @@
         
         
         
-          4 分钟
+          14 分钟
         
       </span>
     
@@ -402,64 +406,53 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">学习MARKDOWN语法（一）</h1>
+            <h1 id="seo-header">对知攻方能知防的进一步学习</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h1><h2 id="两个空格换行"><a href="#两个空格换行" class="headerlink" title="两个空格换行"></a>两个空格换行</h2><p>正常写的话1<br>1换行只有一个空格<br><strong>在末尾加上两个空格就可以啦！</strong>（就像这样子）</p>
-<h2 id="斜体和加粗"><a href="#斜体和加粗" class="headerlink" title="斜体和加粗"></a>斜体和加粗</h2><blockquote>
-<p><code>*打*</code><br> <em>打</em></p>
-</blockquote>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路<br>于是展开了今天的学习  </p>
+<h2 id="🚀-第一步：准备战场（安装-Fail2ban）"><a href="#🚀-第一步：准备战场（安装-Fail2ban）" class="headerlink" title="🚀 第一步：准备战场（安装 Fail2ban）"></a>🚀 第一步：准备战场（安装 Fail2ban）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 更新软件源</span><br><span class="hljs-built_in">sudo</span> apt update<br><br><span class="hljs-comment"># 2. 安装 fail2ban</span><br><span class="hljs-built_in">sudo</span> apt install fail2ban -y<br></code></pre></td></tr></table></figure>
+<p><strong>安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:</strong></p>
 <blockquote>
-<p><code>**好**</code><br> <strong>好</strong></p>
+<p>sudo systemctl status fail2ban</p>
+<p>如果看到绿色的 active (running)，说明它已经开始值班了！</p>
 </blockquote>
-<h2 id="横线去除号"><a href="#横线去除号" class="headerlink" title="横线去除号"></a>横线去除号</h2><blockquote>
-<p><code>~~99.9~~</code><br> <del>99.9</del>  </p>
-</blockquote>
-<p><strong>甚至你可以混着用</strong><br>EG:<strong><del>100</del></strong><br>很神奇吧.(doge)</p>
-<hr>
-<h2 id="分割线的使用"><a href="#分割线的使用" class="headerlink" title="分割线的使用"></a>分割线的使用</h2><blockquote>
-<p><code>***</code>  </p>
-</blockquote>
-<p><em><strong>例子就在上面,哈哈哈嘿嘿嘿</strong></em></p>
-<h2 id="有序、无序列表和勾选框"><a href="#有序、无序列表和勾选框" class="headerlink" title="有序、无序列表和勾选框"></a>有序、无序列表和勾选框</h2><h3 id="有序表"><a href="#有序表" class="headerlink" title="有序表"></a>有序表</h3><ol>
-<li>一级列表 <ul>
-<li>二级列表  </li>
-<li>第二个  <ul>
-<li>三级列表<ul>
-<li>四级列表</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-<li></li>
-<li></li>
-</ol>
-<p><strong>结束有序表使用两个换行</strong><br><strong>使用下一级的列表,用TAB键即可</strong>  </p>
-<h3 id="无序表"><a href="#无序表" class="headerlink" title="无序表"></a>无序表</h3><ul>
-<li>第一个任务</li>
-<li>第二个任务</li>
-<li>第三个任务<blockquote>
-<p><code>* [x] </code> 会呈现✔<br><code>* [ ] </code> 会呈现空着的</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 我是完成的任务</li>
-<li><input disabled="" type="checkbox"> 第四个任务</li>
-</ul>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-meta">#<span class="hljs-keyword">include</span> <span class="hljs-string">&lt;stdio.h&gt;</span></span><br><br><span class="hljs-type">int</span> <span class="hljs-title function_">main</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 打印经典的一句话</span><br>    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;Hello, World!\n&quot;</span>);<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>TIPS:  </p>
+<h2 id="🛠️-第二步：配置小黑屋规则（Jail-配置）"><a href="#🛠️-第二步：配置小黑屋规则（Jail-配置）" class="headerlink" title="🛠️ 第二步：配置小黑屋规则（Jail 配置）"></a>🛠️ 第二步：配置小黑屋规则（Jail 配置）</h2><p><strong>Fail2ban 默认有一套规则，但为了配合我们昨天的红蓝对抗演练，我们要亲手给它写一个“只要 Kali 爆破超过 3 次就立刻封禁”的硬核规则。</strong>  </p>
 <ol>
-<li>在末尾记得加上&#96;&#96;&#96;</li>
-<li>在开头的&#96;&#96;&#96;后面可以加上对应的语言名称  </li>
-<li><code>equal()</code>这里用到了&#96;&#96; 也可以是代码段的一种情况</li>
+<li>在 Mint 终端里，使用纳米编辑器（nano）创建一个属于我们自己的配置文件：<blockquote>
+<p>sudo nano &#x2F;etc&#x2F;fail2ban&#x2F;jail.local</p>
+</blockquote>
+</li>
+<li>把下面这段配置直接复制粘贴进去：<blockquote>
+<p>[sshd]<br>enabled &#x3D; true<br>port    &#x3D; ssh<br>logpath &#x3D; %(sshd_log)s<br>backend &#x3D; %(sshd_backend)s</p>
+</blockquote>
+</li>
 </ol>
+<p>#最大失败次数：3次<br>maxretry &#x3D; 3<br>#封禁时间：600秒（10分钟）<br>bantime  &#x3D; 600<br>#统计失败次数的窗口期：10分钟内失败3次就封<br>findtime &#x3D; 600<br>3. 保存并退出<br>4. 让配置生效：重启一下 Fail2ban 服务：</p>
+<blockquote>
+<p>sudo systemctl restart fail2ban</p>
+</blockquote>
+<h2 id="🥷-第三步：攻防测试（让-Kali-再次发起进攻！）"><a href="#🥷-第三步：攻防测试（让-Kali-再次发起进攻！）" class="headerlink" title="🥷 第三步：攻防测试（让 Kali 再次发起进攻！）"></a>🥷 第三步：攻防测试（让 Kali 再次发起进攻！）</h2><p><strong>像昨天一样，再次对 Mint 发起 SSH 爆破或者直接故意输错密码登录</strong><br><img src="/image-2.png" srcset="/img/loading.gif" lazyload alt="alt text"><br> 在三次错误后就会被<code>permission denied</code></p>
+<h2 id="🛡️-第四步：切回蓝队（Mint），查看战果"><a href="#🛡️-第四步：切回蓝队（Mint），查看战果" class="headerlink" title="🛡️ 第四步：切回蓝队（Mint），查看战果"></a>🛡️ 第四步：切回蓝队（Mint），查看战果</h2><p> 当你在 Kali 端被成功拦截后，切回你的 Linux Mint 终端，输入以下命令让 Fail2ban 保安汇报战绩  </p>
+<blockquote>
+<p>sudo fail2ban-client status sshd  </p>
+</blockquote>
+<p> 看到输出里有一行叫 <code>Banned IP list</code>后面会清清楚楚地列着你 Kali 的 IP 地址<br><img src="/image-1.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h2 id="第五步：研究背后的原理（防止变成脚本小子doge）"><a href="#第五步：研究背后的原理（防止变成脚本小子doge）" class="headerlink" title="第五步：研究背后的原理（防止变成脚本小子doge）"></a>第五步：研究背后的原理（防止变成脚本小子doge）</h2><h3 id="fb2本质"><a href="#fb2本质" class="headerlink" title="fb2本质"></a>fb2本质</h3><p> Fail2ban 本质上是一个运行在 Linux 应用层的 Python 程序。它平时不做别的，就死死盯着你指定的日志文件（比如 &#x2F;var&#x2F;log&#x2F;auth.log）</p>
+<h3 id="整个流程"><a href="#整个流程" class="headerlink" title="整个流程"></a>整个流程</h3><p> <strong>盯梢 $\rightarrow$ 判刑 $\rightarrow$ 行刑</strong>  </p>
+<ol>
+<li>盯梢（应用层日志审计）  <blockquote>
+<p>当黑客在 Kali 端尝试 SSH 登录失败时，Linux 的 SSH 服务（sshd）就会在日志里写下一行：<br>Jul 19 15:30:00 panda-vm sshd[2888]: Failed password for panda from 192.168.249.129 port 39929 ssh2</p>
+</blockquote>
+</li>
+</ol>
+<p><strong>Fail2ban 内部有一套 正则表达式（Filter）</strong>  </p>
+<blockquote>
+<p>当它扫描到这行日志时，匹配到了 Failed password 和 IP 192.168.249.129，它的内部计数器就会给这个 IP 默默地记上一次<br>2. 判刑（触发 Jail 阈值）<br>当你在配置文件 jail.local 里设置了 <strong>maxretry &#x3D; 3</strong>，意味着只要在 findtime（10分钟）内，同一个 IP 触发了 3 次这样的日志，Fail2ban 的控制核心就会发出警报<br>这时，Fail2ban 会根据你系统里的防火墙类型，自动生成一条只有计算机才能看懂的底层防火墙命令。<br>3. 行刑（深入 Linux 内核的 Netfilter）<br>   <img src="/image.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>   在这里面发现了 <strong>只要访问目标端口是 22（SSH），并且它的源 IP 在上面那个名单簿里，通通拒绝（reject）</strong><code>tcp dport 22 ip saddr @addr-set-sshd reject</code></p>
+</blockquote>
 <hr>
-<h1 id="今天是第一天，一定要坚持下去哦，呵呵呵哒"><a href="#今天是第一天，一定要坚持下去哦，呵呵呵哒" class="headerlink" title="今天是第一天，一定要坚持下去哦，呵呵呵哒"></a>今天是第一天，一定要坚持下去哦，呵呵呵哒</h1>
+<h1 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h1>
                 
               </div>
             
@@ -471,7 +464,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Markdown/" class="print-no-link">#Markdown</a>
+        <a href="/tags/Linux-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="print-no-link">#Linux 网络安全</a>
       
     </div>
   
@@ -483,8 +476,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>学习MARKDOWN语法（一）</div>
-      <div>https://harden13131.github.io/2026/07/16/学习MARKDOWN语法（一）/</div>
+      <div>对知攻方能知防的进一步学习</div>
+      <div>https://harden13131.github.io/2026/07/19/对知攻方能知防的进一步学习(Fail2ban)/</div>
     </div>
     <div class="license-meta">
       
@@ -496,7 +489,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年7月16日</div>
+          <div>2026年7月19日</div>
         </div>
       
       
@@ -528,18 +521,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/17/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" title="学习MARKDOWN语法（二）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">学习MARKDOWN语法（二）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/07/15/%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%EF%BC%9A%E4%BB%8E-Kali-%E6%B8%97%E9%80%8F%E5%88%B0-Linux-Mint-%E6%9C%AC%E5%9C%B0%E5%AE%89%E5%85%A8%E5%8F%8D%E5%88%B6%EF%BC%88%E9%99%84%E6%97%A5%E5%BF%97%E5%88%86%E6%9E%90%EF%BC%89/" title="知攻方能知防：从 Kali 渗透到 Linux Mint 本地安全反制（附日志分析）">
-                        <span class="hidden-mobile">知攻方能知防：从 Kali 渗透到 Linux Mint 本地安全反制（附日志分析）</span>
+                      <a href="/2026/07/17/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" title="学习MARKDOWN语法（二）">
+                        <span class="hidden-mobile">学习MARKDOWN语法（二）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
