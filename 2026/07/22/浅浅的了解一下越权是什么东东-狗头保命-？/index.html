@@ -19,28 +19,23 @@
   <meta name="author" content="Harden">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路于是展开了今天的学习   🚀 第一步：准备战场（安装 Fail2ban）12345# 1. 更新软件源sudo apt update# 2. 安装 fail2bansudo apt install fail2ban -y 安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:  sudo syst">
+    <meta name="description" content="前言越权的简单理解：干了不该干的事情 或者看了不该看的数据    指的是应用程序在验证了用户的身份（知道你是谁）之后没有严格检查你的权限，导致普通用户执行了只有特定人（如管理员或其他用户）才能执行的操作。  越权的两大核心类型 水平越权（同级越权）   概念：发生在权限级别相同的用户之间。你可以访问或修改同等级别其他用户的数据 常见场景：   在查询个人订单时，网址是 …&#x2F;order?i">
 <meta property="og:type" content="article">
-<meta property="og:title" content="对知攻方能知防的进一步学习">
-<meta property="og:url" content="https://harden13131.github.io/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/index.html">
+<meta property="og:title" content="浅浅的了解一下越权是什么东东(狗头保命)？">
+<meta property="og:url" content="https://harden13131.github.io/2026/07/22/%E6%B5%85%E6%B5%85%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%B6%8A%E6%9D%83%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C-%E7%8B%97%E5%A4%B4%E4%BF%9D%E5%91%BD-%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Harden的个人博客">
-<meta property="og:description" content="前言在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路于是展开了今天的学习   🚀 第一步：准备战场（安装 Fail2ban）12345# 1. 更新软件源sudo apt update# 2. 安装 fail2bansudo apt install fail2ban -y 安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:  sudo syst">
+<meta property="og:description" content="前言越权的简单理解：干了不该干的事情 或者看了不该看的数据    指的是应用程序在验证了用户的身份（知道你是谁）之后没有严格检查你的权限，导致普通用户执行了只有特定人（如管理员或其他用户）才能执行的操作。  越权的两大核心类型 水平越权（同级越权）   概念：发生在权限级别相同的用户之间。你可以访问或修改同等级别其他用户的数据 常见场景：   在查询个人订单时，网址是 …&#x2F;order?i">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://harden13131.github.io/image-2.png">
-<meta property="og:image" content="https://harden13131.github.io/image-1.png">
-<meta property="og:image" content="https://harden13131.github.io/image.png">
-<meta property="article:published_time" content="2026-07-19T07:38:57.000Z">
-<meta property="article:modified_time" content="2026-07-19T08:30:14.494Z">
+<meta property="article:published_time" content="2026-07-22T09:06:22.000Z">
+<meta property="article:modified_time" content="2026-07-23T08:16:06.984Z">
 <meta property="article:author" content="Harden">
-<meta property="article:tag" content="Linux 网络安全">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://harden13131.github.io/image-2.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>对知攻方能知防的进一步学习 - Harden的个人博客</title>
+  <title>浅浅的了解一下越权是什么东东(狗头保命)？ - Harden的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -333,7 +328,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="对知攻方能知防的进一步学习"></span>
+            <span id="subtitle" data-typed-text="浅浅的了解一下越权是什么东东(狗头保命)？"></span>
           
         </div>
 
@@ -344,8 +339,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-07-19 15:38" pubdate>
-          2026年7月19日 下午
+        <time datetime="2026-07-22 17:06" pubdate>
+          2026年7月22日 下午
         </time>
       </span>
     
@@ -356,7 +351,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.6k 字
+          1.3k 字
         
       </span>
     
@@ -367,7 +362,7 @@
         
         
         
-          14 分钟
+          12 分钟
         
       </span>
     
@@ -406,53 +401,71 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">对知攻方能知防的进一步学习</h1>
+            <h1 id="seo-header">浅浅的了解一下越权是什么东东(狗头保命)？</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在上一次的学习之后，我对AI进行了进一步的问答，它提供了一个防守自动化的工具和思路<br>于是展开了今天的学习  </p>
-<h2 id="🚀-第一步：准备战场（安装-Fail2ban）"><a href="#🚀-第一步：准备战场（安装-Fail2ban）" class="headerlink" title="🚀 第一步：准备战场（安装 Fail2ban）"></a>🚀 第一步：准备战场（安装 Fail2ban）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 更新软件源</span><br><span class="hljs-built_in">sudo</span> apt update<br><br><span class="hljs-comment"># 2. 安装 fail2ban</span><br><span class="hljs-built_in">sudo</span> apt install fail2ban -y<br></code></pre></td></tr></table></figure>
-<p><strong>安装完成后，我们可以用下面这个命令看看这位“新保安”有没有正式上岗:</strong></p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>越权的简单理解：<br><strong>干了不该干的事情</strong> <strong>或者看了不该看的数据</strong>  </p>
 <blockquote>
-<p>sudo systemctl status fail2ban</p>
-<p>如果看到绿色的 active (running)，说明它已经开始值班了！</p>
+<p>指的是应用程序在验证了用户的身份（知道你是谁）之后<br>没有严格检查你的权限，导致普通用户执行了只有特定人（如管理员或其他用户）才能执行的操作。</p>
 </blockquote>
-<h2 id="🛠️-第二步：配置小黑屋规则（Jail-配置）"><a href="#🛠️-第二步：配置小黑屋规则（Jail-配置）" class="headerlink" title="🛠️ 第二步：配置小黑屋规则（Jail 配置）"></a>🛠️ 第二步：配置小黑屋规则（Jail 配置）</h2><p><strong>Fail2ban 默认有一套规则，但为了配合我们昨天的红蓝对抗演练，我们要亲手给它写一个“只要 Kali 爆破超过 3 次就立刻封禁”的硬核规则。</strong>  </p>
-<ol>
-<li>在 Mint 终端里，使用纳米编辑器（nano）创建一个属于我们自己的配置文件：<blockquote>
-<p>sudo nano &#x2F;etc&#x2F;fail2ban&#x2F;jail.local</p>
-</blockquote>
-</li>
-<li>把下面这段配置直接复制粘贴进去：<blockquote>
-<p>[sshd]<br>enabled &#x3D; true<br>port    &#x3D; ssh<br>logpath &#x3D; %(sshd_log)s<br>backend &#x3D; %(sshd_backend)s</p>
-</blockquote>
-</li>
+<h2 id="越权的两大核心类型"><a href="#越权的两大核心类型" class="headerlink" title="越权的两大核心类型"></a>越权的两大核心类型</h2><ol>
+<li>水平越权（同级越权）</li>
 </ol>
-<p>#最大失败次数：3次<br>maxretry &#x3D; 3<br>#封禁时间：600秒（10分钟）<br>bantime  &#x3D; 600<br>#统计失败次数的窗口期：10分钟内失败3次就封<br>findtime &#x3D; 600<br>3. 保存并退出<br>4. 让配置生效：重启一下 Fail2ban 服务：</p>
-<blockquote>
-<p>sudo systemctl restart fail2ban</p>
-</blockquote>
-<h2 id="🥷-第三步：攻防测试（让-Kali-再次发起进攻！）"><a href="#🥷-第三步：攻防测试（让-Kali-再次发起进攻！）" class="headerlink" title="🥷 第三步：攻防测试（让 Kali 再次发起进攻！）"></a>🥷 第三步：攻防测试（让 Kali 再次发起进攻！）</h2><p><strong>像昨天一样，再次对 Mint 发起 SSH 爆破或者直接故意输错密码登录</strong><br><img src="/image-2.png" srcset="/img/loading.gif" lazyload alt="alt text"><br> 在三次错误后就会被<code>permission denied</code></p>
-<h2 id="🛡️-第四步：切回蓝队（Mint），查看战果"><a href="#🛡️-第四步：切回蓝队（Mint），查看战果" class="headerlink" title="🛡️ 第四步：切回蓝队（Mint），查看战果"></a>🛡️ 第四步：切回蓝队（Mint），查看战果</h2><p> 当你在 Kali 端被成功拦截后，切回你的 Linux Mint 终端，输入以下命令让 Fail2ban 保安汇报战绩  </p>
-<blockquote>
-<p>sudo fail2ban-client status sshd  </p>
-</blockquote>
-<p> 看到输出里有一行叫 <code>Banned IP list</code>后面会清清楚楚地列着你 Kali 的 IP 地址<br><img src="/image-1.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<h2 id="第五步：研究背后的原理（防止变成脚本小子doge）"><a href="#第五步：研究背后的原理（防止变成脚本小子doge）" class="headerlink" title="第五步：研究背后的原理（防止变成脚本小子doge）"></a>第五步：研究背后的原理（防止变成脚本小子doge）</h2><h3 id="fb2本质"><a href="#fb2本质" class="headerlink" title="fb2本质"></a>fb2本质</h3><p> Fail2ban 本质上是一个运行在 Linux 应用层的 Python 程序。它平时不做别的，就死死盯着你指定的日志文件（比如 &#x2F;var&#x2F;log&#x2F;auth.log）</p>
-<h3 id="整个流程"><a href="#整个流程" class="headerlink" title="整个流程"></a>整个流程</h3><p> <strong>盯梢 $\rightarrow$ 判刑 $\rightarrow$ 行刑</strong>  </p>
-<ol>
-<li>盯梢（应用层日志审计）  <blockquote>
-<p>当黑客在 Kali 端尝试 SSH 登录失败时，Linux 的 SSH 服务（sshd）就会在日志里写下一行：<br>Jul 19 15:30:00 panda-vm sshd[2888]: Failed password for panda from 192.168.249.129 port 39929 ssh2</p>
+<ul>
+<li>概念：发生在权限级别<code>相同</code>的用户之间。你可以访问或修改同等级别其他用户的数据</li>
+<li>常见场景：  <blockquote>
+<p>在查询个人订单时，网址是 …&#x2F;order?id&#x3D;1001。<br>如果你把 1001 改成 1002，系统没有校验 1002 是不是你的，直接把别人的订单详情、地址、手机号显示出来了。</p>
 </blockquote>
 </li>
+</ul>
+<ol start="2">
+<li>垂直越权（跨级越权）</li>
 </ol>
-<p><strong>Fail2ban 内部有一套 正则表达式（Filter）</strong>  </p>
-<blockquote>
-<p>当它扫描到这行日志时，匹配到了 Failed password 和 IP 192.168.249.129，它的内部计数器就会给这个 IP 默默地记上一次<br>2. 判刑（触发 Jail 阈值）<br>当你在配置文件 jail.local 里设置了 <strong>maxretry &#x3D; 3</strong>，意味着只要在 findtime（10分钟）内，同一个 IP 触发了 3 次这样的日志，Fail2ban 的控制核心就会发出警报<br>这时，Fail2ban 会根据你系统里的防火墙类型，自动生成一条只有计算机才能看懂的底层防火墙命令。<br>3. 行刑（深入 Linux 内核的 Netfilter）<br>   <img src="/image.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>   在这里面发现了 <strong>只要访问目标端口是 22（SSH），并且它的源 IP 在上面那个名单簿里，通通拒绝（reject）</strong><code>tcp dport 22 ip saddr @addr-set-sshd reject</code></p>
+<ul>
+<li>概念：发生在权限级别<code>不同</code>的用户之间。低权限的用户成功执行了高权限（如管理员）才能做的事。</li>
+<li>常见场景：<blockquote>
+<p>普通用户登录后的后台管理页面地址是 …&#x2F;admin&#x2F;delete_user。<br>普通用户登录后的后台管理页面地址是 …&#x2F;admin&#x2F;delete_user。</p>
 </blockquote>
-<hr>
-<h1 id="大功告成"><a href="#大功告成" class="headerlink" title="大功告成"></a>大功告成</h1>
+</li>
+</ul>
+<h2 id="越权漏洞的产生"><a href="#越权漏洞的产生" class="headerlink" title="越权漏洞的产生"></a>越权漏洞的产生</h2><h3 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h3><p>系统在处理用户请求时，只验证了“你是谁”（身份认证，Authentication），而忽略或漏掉了“你能干什么”（权限授权，Authorization）。</p>
+<h3 id="前端的原因"><a href="#前端的原因" class="headerlink" title="前端的原因"></a>前端的原因</h3><ol>
+<li>直接暴露对象标识符（IDOR - Insecure Direct Object References）</li>
+</ol>
+<ul>
+<li>系统直接把数据库的主键（如用户 ID user_id&#x3D;101、订单 ID order_id&#x3D;5002）放在请求参数或 URL 中。当用户把 101 改成 102 时，服务器没有校验当前登录用户是否拥有 102 号数据的读取权限。</li>
+</ul>
+<ol start="2">
+<li>前端隐藏敏感按钮</li>
+</ol>
+<ul>
+<li>攻击者不需要通过点击界面上的按钮来发请求。他们可以通过抓包工具，直接向服务器发送这个“敏感按钮”背后对应的 API 接口指令（例如 POST &#x2F;api&#x2F;user&#x2F;delete）。如果后端没有做权限检查，操作依然会成功执行——这就是垂直越权</li>
+</ul>
+<h3 id="后端的原因"><a href="#后端的原因" class="headerlink" title="后端的原因"></a>后端的原因</h3><ol>
+<li>未确认用户已登录</li>
+</ol>
+<ul>
+<li>程序在收到请求后，确实检查了用户的 Cookie 或 Token（确认了合法身份），但没有查询数据库来核实该数据是否属于该用户。</li>
+<li>需要进行第二次校验来与第一次的user_id进行对比，看是否对该具体资源拥有权限。</li>
+</ul>
+<h3 id="访问控制机制设计不严密"><a href="#访问控制机制设计不严密" class="headerlink" title="访问控制机制设计不严密"></a>访问控制机制设计不严密</h3><ol>
+<li>随着业务越来越复杂，系统的权限层级也会增多</li>
+</ol>
+<ul>
+<li>硬编码漏洞：权限控制分散写在各个接口的代码里，容易漏写。比如开发了 100 个后台接口，其中 99 个都加了管理员权限检查，但有 1 个接口忘记加，就会产生垂直越权。</li>
+<li>默认配置不安全：路由或中间件配置错误，例如误将管理后台的接口路径（如 &#x2F;api&#x2F;admin&#x2F;*）配置成了公开访问或仅需普通登录访问。</li>
+</ul>
+<ol start="2">
+<li>不可靠的身份验证</li>
+</ol>
+<ul>
+<li>默认配置不安全：路由或中间件配置错误，例如误将管理后台的接口路径（如 &#x2F;api&#x2F;admin&#x2F;*）配置成了公开访问或仅需普通登录访问。</li>
+<li>前端传参决定身份：某些不规范的接口，让前端直接提交 is_admin&#x3D;true 或 role&#x3D;admin 参数，服务器未经校验就直接信任了客户端传过来的身份字段。</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">越权漏洞并非遥不可攀，只需要前期信息收集的够多，就有机会发现前后端的薄弱点，对每一个地方的权限验证逻辑仔细斟酌。<br></code></pre></td></tr></table></figure>
+
                 
               </div>
             
@@ -460,13 +473,6 @@
             <div>
               <div class="post-metas my-3">
   
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/Linux-%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/" class="print-no-link">#Linux 网络安全</a>
-      
-    </div>
   
 </div>
 
@@ -476,8 +482,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>对知攻方能知防的进一步学习</div>
-      <div>https://harden13131.github.io/2026/07/19/对知攻方能知防的进一步学习(Fail2ban)/</div>
+      <div>浅浅的了解一下越权是什么东东(狗头保命)？</div>
+      <div>https://harden13131.github.io/2026/07/22/浅浅的了解一下越权是什么东东-狗头保命-？/</div>
     </div>
     <div class="license-meta">
       
@@ -489,7 +495,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年7月19日</div>
+          <div>2026年7月22日</div>
         </div>
       
       
@@ -521,18 +527,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/22/%E6%B5%85%E6%B5%85%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%B6%8A%E6%9D%83%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C-%E7%8B%97%E5%A4%B4%E4%BF%9D%E5%91%BD-%EF%BC%9F/" title="浅浅的了解一下越权是什么东东(狗头保命)？">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">浅浅的了解一下越权是什么东东(狗头保命)？</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/07/17/%E5%AD%A6%E4%B9%A0MARKDOWN%E8%AF%AD%E6%B3%95%EF%BC%88%E4%BA%8C%EF%BC%89/" title="学习MARKDOWN语法（二）">
-                        <span class="hidden-mobile">学习MARKDOWN语法（二）</span>
+                      <a href="/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/" title="对知攻方能知防的进一步学习">
+                        <span class="hidden-mobile">对知攻方能知防的进一步学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

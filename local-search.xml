@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>浅浅的了解一下越权是什么东东(狗头保命)？</title>
+    <link href="/2026/07/22/%E6%B5%85%E6%B5%85%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%B6%8A%E6%9D%83%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C-%E7%8B%97%E5%A4%B4%E4%BF%9D%E5%91%BD-%EF%BC%9F/"/>
+    <url>/2026/07/22/%E6%B5%85%E6%B5%85%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%B6%8A%E6%9D%83%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C-%E7%8B%97%E5%A4%B4%E4%BF%9D%E5%91%BD-%EF%BC%9F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>越权的简单理解：<br><strong>干了不该干的事情</strong> <strong>或者看了不该看的数据</strong>  </p><blockquote><p>指的是应用程序在验证了用户的身份（知道你是谁）之后<br>没有严格检查你的权限，导致普通用户执行了只有特定人（如管理员或其他用户）才能执行的操作。</p></blockquote><h2 id="越权的两大核心类型"><a href="#越权的两大核心类型" class="headerlink" title="越权的两大核心类型"></a>越权的两大核心类型</h2><ol><li>水平越权（同级越权）</li></ol><ul><li>概念：发生在权限级别<code>相同</code>的用户之间。你可以访问或修改同等级别其他用户的数据</li><li>常见场景：  <blockquote><p>在查询个人订单时，网址是 …&#x2F;order?id&#x3D;1001。<br>如果你把 1001 改成 1002，系统没有校验 1002 是不是你的，直接把别人的订单详情、地址、手机号显示出来了。</p></blockquote></li></ul><ol start="2"><li>垂直越权（跨级越权）</li></ol><ul><li>概念：发生在权限级别<code>不同</code>的用户之间。低权限的用户成功执行了高权限（如管理员）才能做的事。</li><li>常见场景：<blockquote><p>普通用户登录后的后台管理页面地址是 …&#x2F;admin&#x2F;delete_user。<br>普通用户登录后的后台管理页面地址是 …&#x2F;admin&#x2F;delete_user。</p></blockquote></li></ul><h2 id="越权漏洞的产生"><a href="#越权漏洞的产生" class="headerlink" title="越权漏洞的产生"></a>越权漏洞的产生</h2><h3 id="本质"><a href="#本质" class="headerlink" title="本质"></a>本质</h3><p>系统在处理用户请求时，只验证了“你是谁”（身份认证，Authentication），而忽略或漏掉了“你能干什么”（权限授权，Authorization）。</p><h3 id="前端的原因"><a href="#前端的原因" class="headerlink" title="前端的原因"></a>前端的原因</h3><ol><li>直接暴露对象标识符（IDOR - Insecure Direct Object References）</li></ol><ul><li>系统直接把数据库的主键（如用户 ID user_id&#x3D;101、订单 ID order_id&#x3D;5002）放在请求参数或 URL 中。当用户把 101 改成 102 时，服务器没有校验当前登录用户是否拥有 102 号数据的读取权限。</li></ul><ol start="2"><li>前端隐藏敏感按钮</li></ol><ul><li>攻击者不需要通过点击界面上的按钮来发请求。他们可以通过抓包工具，直接向服务器发送这个“敏感按钮”背后对应的 API 接口指令（例如 POST &#x2F;api&#x2F;user&#x2F;delete）。如果后端没有做权限检查，操作依然会成功执行——这就是垂直越权</li></ul><h3 id="后端的原因"><a href="#后端的原因" class="headerlink" title="后端的原因"></a>后端的原因</h3><ol><li>未确认用户已登录</li></ol><ul><li>程序在收到请求后，确实检查了用户的 Cookie 或 Token（确认了合法身份），但没有查询数据库来核实该数据是否属于该用户。</li><li>需要进行第二次校验来与第一次的user_id进行对比，看是否对该具体资源拥有权限。</li></ul><h3 id="访问控制机制设计不严密"><a href="#访问控制机制设计不严密" class="headerlink" title="访问控制机制设计不严密"></a>访问控制机制设计不严密</h3><ol><li>随着业务越来越复杂，系统的权限层级也会增多</li></ol><ul><li>硬编码漏洞：权限控制分散写在各个接口的代码里，容易漏写。比如开发了 100 个后台接口，其中 99 个都加了管理员权限检查，但有 1 个接口忘记加，就会产生垂直越权。</li><li>默认配置不安全：路由或中间件配置错误，例如误将管理后台的接口路径（如 &#x2F;api&#x2F;admin&#x2F;*）配置成了公开访问或仅需普通登录访问。</li></ul><ol start="2"><li>不可靠的身份验证</li></ol><ul><li>默认配置不安全：路由或中间件配置错误，例如误将管理后台的接口路径（如 &#x2F;api&#x2F;admin&#x2F;*）配置成了公开访问或仅需普通登录访问。</li><li>前端传参决定身份：某些不规范的接口，让前端直接提交 is_admin&#x3D;true 或 role&#x3D;admin 参数，服务器未经校验就直接信任了客户端传过来的身份字段。</li></ul><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs">越权漏洞并非遥不可攀，只需要前期信息收集的够多，就有机会发现前后端的薄弱点，对每一个地方的权限验证逻辑仔细斟酌。<br></code></pre></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>对知攻方能知防的进一步学习</title>
     <link href="/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/"/>
     <url>/2026/07/19/%E5%AF%B9%E7%9F%A5%E6%94%BB%E6%96%B9%E8%83%BD%E7%9F%A5%E9%98%B2%E7%9A%84%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%AD%A6%E4%B9%A0(Fail2ban)/</url>
