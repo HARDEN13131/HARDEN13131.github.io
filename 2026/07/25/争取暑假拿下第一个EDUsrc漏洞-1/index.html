@@ -1,0 +1,1169 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Harden">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="🎓 edu SRC 漏洞挖掘入门指南 适用人群：有 CTF 基础、第一次玩 SRC、主攻 Web 与小程序的师傅目标：2-4 周内出第一单，建立可复用的工作流   一、为什么选 edu SRC 起步   优势 说明    门槛低 教育行业安全水位普遍偏低，弱口令、默认配置、信息泄露一挖一个准   收录快 edu 类 SRC 普遍出报告 1-3 天审核   资产广 一个高校 &#x3D; 几十个站">
+<meta property="og:type" content="article">
+<meta property="og:title" content="争取暑假拿下第一个EDUsrc漏洞">
+<meta property="og:url" content="https://harden13131.github.io/2026/07/25/%E4%BA%89%E5%8F%96%E6%9A%91%E5%81%87%E6%8B%BF%E4%B8%8B%E7%AC%AC%E4%B8%80%E4%B8%AAEDUsrc%E6%BC%8F%E6%B4%9E-1/index.html">
+<meta property="og:site_name" content="Harden的个人博客">
+<meta property="og:description" content="🎓 edu SRC 漏洞挖掘入门指南 适用人群：有 CTF 基础、第一次玩 SRC、主攻 Web 与小程序的师傅目标：2-4 周内出第一单，建立可复用的工作流   一、为什么选 edu SRC 起步   优势 说明    门槛低 教育行业安全水位普遍偏低，弱口令、默认配置、信息泄露一挖一个准   收录快 edu 类 SRC 普遍出报告 1-3 天审核   资产广 一个高校 &#x3D; 几十个站">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2026-07-25T09:29:49.000Z">
+<meta property="article:modified_time" content="2026-07-25T09:31:53.177Z">
+<meta property="article:author" content="Harden">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>争取暑假拿下第一个EDUsrc漏洞 - Harden的个人博客</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="/css/custom.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"harden13131.github.io","root":"/","version":"1.9.9","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"expand_all":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"openkounter":{"server_url":"https://open-kounter.mintimate.cn","path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+<style>
+  /* 1. 强制页面上的“所有元素”在默认状态下都使用猫咪光标 */
+  * {
+    cursor: url('https://cos.shizuri.net/cur/default.cur'), default !important;
+  }
+
+  /* 2. 强制“所有链接、按钮以及它们的子元素”在悬停时都使用点赞手势 */
+  a, 
+  button, 
+  [role="button"], 
+  .pointer,
+  .nav-link, 
+  .btn,
+  a *, 
+  button *,
+  .post-title a,
+  .post-content a {
+    cursor: url('https://cos.shizuri.net/cur/pointer.cur'), pointer !important;
+  }
+</style>
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content (desktop) -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile grid menu overlay -->
+<div id="mobile-grid-menu" class="d-lg-none">
+  <div class="mobile-grid-menu-inner">
+    <div class="container">
+      <div class="row">
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-home-fill"></i>
+                  <span>首页</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/archives/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-archive-fill"></i>
+                  <span>归档</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/categories/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-category-fill"></i>
+                  <span>分类</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/tags/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-tags-fill"></i>
+                  <span>标签</span>
+                </div>
+              </a>
+            </div>
+          
+        
+          
+          
+          
+          
+            <div class="col-4 mobile-grid-cell">
+              <a href="/about/" target="_self">
+                <div class="mobile-grid-item">
+                  <i class="iconfont icon-user-fill"></i>
+                  <span>关于</span>
+                </div>
+              </a>
+            </div>
+          
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-search-btn">
+            <a href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-search"></i>
+                <span>搜索</span>
+              </div>
+            </a>
+          </div>
+        
+        
+          <div class="col-4 mobile-grid-cell" id="mobile-color-toggle-btn"
+               data-label-light="开灯"
+               data-label-dark="关灯">
+            <a href="javascript:;" aria-label="Color Toggle">
+              <div class="mobile-grid-item">
+                <i class="iconfont icon-dark" id="mobile-color-toggle-icon"></i>
+                <span id="mobile-color-toggle-label">关灯</span>
+              </div>
+            </a>
+          </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="争取暑假拿下第一个EDUsrc漏洞"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2026-07-25 17:29" pubdate>
+          2026年7月25日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          6.7k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          56 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">争取暑假拿下第一个EDUsrc漏洞</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1 id="🎓-edu-SRC-漏洞挖掘入门指南"><a href="#🎓-edu-SRC-漏洞挖掘入门指南" class="headerlink" title="🎓 edu SRC 漏洞挖掘入门指南"></a>🎓 edu SRC 漏洞挖掘入门指南</h1><blockquote>
+<p>适用人群：有 CTF 基础、第一次玩 SRC、主攻 Web 与小程序的师傅<br>目标：2-4 周内出第一单，建立可复用的工作流</p>
+</blockquote>
+<hr>
+<h2 id="一、为什么选-edu-SRC-起步"><a href="#一、为什么选-edu-SRC-起步" class="headerlink" title="一、为什么选 edu SRC 起步"></a>一、为什么选 edu SRC 起步</h2><table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>门槛低</td>
+<td>教育行业安全水位普遍偏低，弱口令、默认配置、信息泄露一挖一个准</td>
+</tr>
+<tr>
+<td>收录快</td>
+<td>edu 类 SRC 普遍出报告 1-3 天审核</td>
+</tr>
+<tr>
+<td>资产广</td>
+<td>一个高校 &#x3D; 几十个站点（教务、OA、图书馆、邮件、一卡通、研究生系统…）</td>
+</tr>
+<tr>
+<td>经验友好</td>
+<td>即使无现金奖励，积分和证书能快速攒 SRC 履历</td>
+</tr>
+<tr>
+<td>合规</td>
+<td>都在授权范围内，不踩红线</td>
+</tr>
+</tbody></table>
+<p><strong>典型收录漏洞类型</strong>（按出单率高到低排）：</p>
+<ol>
+<li>弱口令 &#x2F; 默认口令 &#x2F; 万能密码</li>
+<li>信息泄露（学号、身份证、成绩、源码、备份文件）</li>
+<li>未授权访问 &#x2F; 越权（水平&#x2F;垂直）</li>
+<li>SQL 注入</li>
+<li>SSRF</li>
+<li>XSS（存储型为主，反射型通常不收）</li>
+<li>逻辑漏洞（支付、签到、抽奖、找回密码）</li>
+<li>文件上传 &#x2F; 解析漏洞</li>
+<li>小程序鉴权绕过</li>
+</ol>
+<hr>
+<h2 id="二、整体工作流（建议严格按顺序）"><a href="#二、整体工作流（建议严格按顺序）" class="headerlink" title="二、整体工作流（建议严格按顺序）"></a>二、整体工作流（建议严格按顺序）</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 选目标 → 2. 资产收集 → 3. 信息泄露挖掘<br><span class="hljs-code">         → 4. 重点系统深度测试 → 5. 小程序反编译 + 抓包</span><br><span class="hljs-code">         → 6. 漏洞验证 + 复现 → 7. 报告撰写 → 8. 提交</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>核心原则</strong>：先广后深，先信息泄露再深逻辑。edu 站 80% 的单子出在第 3 步。</p>
+<hr>
+<h2 id="三、目标选择策略"><a href="#三、目标选择策略" class="headerlink" title="三、目标选择策略"></a>三、目标选择策略</h2><h3 id="推荐的入手顺序"><a href="#推荐的入手顺序" class="headerlink" title="推荐的入手顺序"></a>推荐的入手顺序</h3><ol>
+<li><strong>985&#x2F;211 头部高校</strong> — SRC 体系成熟，回复快，奖励明确<ul>
+<li>清华、北大、复旦、上交、浙大（多数有自己的 SRC）</li>
+</ul>
+</li>
+<li><strong>省属重点本科</strong> — 资产多、外包多，漏洞密度高</li>
+<li><strong>高职&#x2F;专科</strong> — 漏洞极多但部分 SRC 不收录，慎选</li>
+<li><strong>教育平台类</strong> — 慕课平台、智慧树、学习通、职教云</li>
+</ol>
+<h3 id="找-SRC-入口的方法"><a href="#找-SRC-入口的方法" class="headerlink" title="找 SRC 入口的方法"></a>找 SRC 入口的方法</h3><ul>
+<li>Google: <code>site:xxx.edu.cn 安全应急响应</code> 或 <code>xxx SRC</code></li>
+<li>看目标高校官网底部 → “安全公告” &#x2F; “漏洞报送”</li>
+<li>国内聚合：补天、漏洞盒子有 edu 专项</li>
+</ul>
+<blockquote>
+<p>⚠️ 没有 SRC 的高校不代表不能挖，但要先确认有公开授权（页面声明、邮箱等），避免法律风险。</p>
+</blockquote>
+<hr>
+<h2 id="四、资产收集（这是最关键的一步）"><a href="#四、资产收集（这是最关键的一步）" class="headerlink" title="四、资产收集（这是最关键的一步）"></a>四、资产收集（这是最关键的一步）</h2><h3 id="4-1-子域名-资产发现"><a href="#4-1-子域名-资产发现" class="headerlink" title="4.1 子域名 &#x2F; 资产发现"></a>4.1 子域名 &#x2F; 资产发现</h3><table>
+<thead>
+<tr>
+<th>工具</th>
+<th>用途</th>
+<th>命令示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>OneForAll</strong></td>
+<td>子域爆破</td>
+<td><code>python3 oneforall.py --target xxx.edu.cn run</code></td>
+</tr>
+<tr>
+<td><strong>subfinder</strong></td>
+<td>快速子域</td>
+<td><code>subfinder -d xxx.edu.cn -o subs.txt</code></td>
+</tr>
+<tr>
+<td><strong>fofa &#x2F; hunter &#x2F; quake</strong></td>
+<td>资产测绘</td>
+<td><code>domain=&quot;xxx.edu.cn&quot; &amp;&amp; protocol=&quot;http&quot;</code></td>
+</tr>
+<tr>
+<td><strong>Google Dorks</strong></td>
+<td>手工挖掘</td>
+<td><code>site:xxx.edu.cn inurl:admin</code>、<code>inurl:login</code></td>
+</tr>
+<tr>
+<td><strong>dnsdumpster &#x2F; crt.sh</strong></td>
+<td>证书透明度</td>
+<td>网页搜索目标域名</td>
+</tr>
+</tbody></table>
+<p><strong>重点关注的子域</strong>：</p>
+<ul>
+<li><code>jwc.xxx.edu.cn</code> — 教务系统（高频出单点）</li>
+<li><code>oa.xxx.edu.cn</code> &#x2F; <code>mail.xxx.edu.cn</code> — OA &#x2F; 邮件</li>
+<li><code>library.xxx.edu.cn</code> — 图书馆</li>
+<li><code>yjs.xxx.edu.cn</code> — 研究生</li>
+<li><code>cas.xxx.xxx.edu.cn</code> — 统一身份认证</li>
+<li><code>*vpn*</code> &#x2F; <code>*portal*</code> — 内外网门户</li>
+<li><code>*test*</code> &#x2F; <code>*dev*</code> &#x2F; <code>*staging*</code> — 测试环境（漏洞密度极高）</li>
+</ul>
+<h3 id="4-2-端口扫描-服务识别"><a href="#4-2-端口扫描-服务识别" class="headerlink" title="4.2 端口扫描 + 服务识别"></a>4.2 端口扫描 + 服务识别</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 快速识别</span><br>nmap -sV -p- --open -iL subs.txt -oN nmap.txt<br><br><span class="hljs-comment"># 重点关注端口</span><br>21 (FTP) / 22 (SSH) / 3306 (MySQL) / 6379 (Redis)<br>8080 / 8443 / 9090 / 9200 (Elasticsearch) / 11211 (Memcached)<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-3-目录-文件扫描"><a href="#4-3-目录-文件扫描" class="headerlink" title="4.3 目录 &#x2F; 文件扫描"></a>4.3 目录 &#x2F; 文件扫描</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># dirsearch（首选）</span><br>dirsearch -u https://target.xxx.edu.cn -e php,asp,aspx,jsp,html,zip,rar,sql,bak -t 50<br><br><span class="hljs-comment"># 重点字典</span><br>- 备份文件: *.zip, *.rar, *.7z, *.tar.gz, *.bak, *.sql, *.swp<br>- 配置文件: web.config, .<span class="hljs-built_in">env</span>, .git/, .svn/, .DS_Store<br>- 后台路径: admin/, manage/, system/, login.jsp, console<br>- 框架指纹: /actuator, /swagger-ui.html, /api/v1, /v1/<br></code></pre></td></tr></table></figure>
+
+<h3 id="4-4-信息泄露专项（edu-站最常出单的点）"><a href="#4-4-信息泄露专项（edu-站最常出单的点）" class="headerlink" title="4.4 信息泄露专项（edu 站最常出单的点）"></a>4.4 信息泄露专项（edu 站最常出单的点）</h3><h4 id="4-4-1-GitHub-网盘泄露"><a href="#4-4-1-GitHub-网盘泄露" class="headerlink" title="4.4.1 GitHub &#x2F; 网盘泄露"></a>4.4.1 GitHub &#x2F; 网盘泄露</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># GitHub 搜索</span><br>site:github.com <span class="hljs-string">&quot;xxx.edu.cn&quot;</span> password<br>site:github.com <span class="hljs-string">&quot;xxx.edu.cn&quot;</span> api_key<br>site:github.com <span class="hljs-string">&quot;xxx.edu.cn&quot;</span> 身份证<br>site:github.com <span class="hljs-string">&quot;xxx.edu.cn&quot;</span> 教务<br><br><span class="hljs-comment"># 网盘（百度网盘 / 阿里云盘）</span><br>关键词：xxx 大学 + 成绩 / 学号 / 名单 / 一卡通<br></code></pre></td></tr></table></figure>
+
+<h4 id="4-4-2-站点自身泄露"><a href="#4-4-2-站点自身泄露" class="headerlink" title="4.4.2 站点自身泄露"></a>4.4.2 站点自身泄露</h4><ul>
+<li><strong>目录遍历</strong>：<code>/upload/</code>、<code>/backup/</code>、<code>/files/</code>、<code>/data/</code> 是否有列目录</li>
+<li><strong>备份文件</strong>：访问 <code>index.php.bak</code>、<code>/www.zip</code>、<code>/backup.sql</code></li>
+<li><strong>配置文件</strong>：<code>/WEB-INF/web.xml</code>、<code>/application.yml</code></li>
+<li><strong>测试文件</strong>：<code>/test.html</code>、<code>/phpinfo.php</code>、<code>/console</code></li>
+<li><strong>错误信息</strong>：触发 500 错误看是否暴露绝对路径、SQL 语句、堆栈</li>
+<li><strong>JS 注释</strong>：JS 文件里经常有 API 地址、密钥、注释掉的测试账号</li>
+</ul>
+<h4 id="4-4-3-内部文档外泄"><a href="#4-4-3-内部文档外泄" class="headerlink" title="4.4.3 内部文档外泄"></a>4.4.3 内部文档外泄</h4><ul>
+<li>学术答辩 PPT、毕业论文、实训报告里经常贴出”我们系统的登录页是 xxx”</li>
+<li>招聘 JD 里写”基于 Spring Cloud + MySQL + Redis”</li>
+<li>B 站 &#x2F; 抖音 &#x2F; 知乎上的技术分享视频</li>
+</ul>
+<hr>
+<h2 id="五、重点系统漏洞挖掘清单"><a href="#五、重点系统漏洞挖掘清单" class="headerlink" title="五、重点系统漏洞挖掘清单"></a>五、重点系统漏洞挖掘清单</h2><h3 id="5-1-教务系统（最高频）"><a href="#5-1-教务系统（最高频）" class="headerlink" title="5.1 教务系统（最高频）"></a>5.1 教务系统（最高频）</h3><p><strong>必查清单</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 万能密码（<code>&#39; or &#39;1&#39;=&#39;1&#39;-- -</code>、admin’ –）</li>
+<li><input disabled="" type="checkbox"> 默认账号（admin&#x2F;123456、test&#x2F;test、guest&#x2F;guest）</li>
+<li><input disabled="" type="checkbox"> 学号 &#x2F; 工号 枚举（弱口令、撞库）</li>
+<li><input disabled="" type="checkbox"> 成绩 &#x2F; 学籍 信息泄露（未授权直接访问 &#x2F;download?id&#x3D;）</li>
+<li><input disabled="" type="checkbox"> 选课接口越权（改 studentId 参数看能不能看别人的课表）</li>
+<li><input disabled="" type="checkbox"> 支付 &#x2F; 缴费逻辑（金额负数、改标志位）</li>
+<li><input disabled="" type="checkbox"> 文件上传（头像、作业、附件 — 上 WebShell 验证，但<strong>别真传，只验证能不能上传 PHP</strong>）</li>
+<li><input disabled="" type="checkbox"> 验证码可绕过（OCR &#x2F; 暴力 &#x2F; 删除 cookie）</li>
+</ul>
+<p><strong>经典 payload</strong>：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 万能密码</span><br>admin<span class="hljs-string">&#x27; or &#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27;=&#x27;</span><span class="hljs-number">1</span><span class="hljs-string">&#x27;--</span><br><span class="hljs-string">admin&#x27;</span>#<br>&quot; or &quot;<span class="hljs-number">1</span>&quot;=&quot;<span class="hljs-number">1</span>&quot;--<br>&#x27; or 1=1#<br><br>-- 时间盲注检测<br>&#x27; AND SLEEP(5)--<br>1&#x27; AND IF(1=1, SLEEP(5), 0)--<br></code></pre></td></tr></table></figure>
+
+<h3 id="5-2-一卡通-支付系统"><a href="#5-2-一卡通-支付系统" class="headerlink" title="5.2 一卡通 &#x2F; 支付系统"></a>5.2 一卡通 &#x2F; 支付系统</h3><ul>
+<li><input disabled="" type="checkbox"> 支付金额修改（客户端改总价）</li>
+<li><input disabled="" type="checkbox"> 充值订单并发（同一订单多次使用）</li>
+<li><input disabled="" type="checkbox"> 余额查询越权</li>
+<li><input disabled="" type="checkbox"> 充值卡密爆破 &#x2F; 重放</li>
+<li><input disabled="" type="checkbox"> 退款逻辑漏洞</li>
+</ul>
+<h3 id="5-3-邮件-VPN-OA"><a href="#5-3-邮件-VPN-OA" class="headerlink" title="5.3 邮件 &#x2F; VPN &#x2F; OA"></a>5.3 邮件 &#x2F; VPN &#x2F; OA</h3><ul>
+<li><input disabled="" type="checkbox"> 默认 VPN 账号</li>
+<li><input disabled="" type="checkbox"> OA 任意文件下载（<code>/sys/search/...</code>)</li>
+<li><input disabled="" type="checkbox"> 邮件系统弱口令（webmail 撞库）</li>
+<li><input disabled="" type="checkbox"> 历史漏洞利用（致远 OA、用友 NC、泛微 e-cology — 网上公开 PoC 多）</li>
+</ul>
+<h3 id="5-4-通用检查项（每个站必跑）"><a href="#5-4-通用检查项（每个站必跑）" class="headerlink" title="5.4 通用检查项（每个站必跑）"></a>5.4 通用检查项（每个站必跑）</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. CORS 配置错误</span><br>Origin: https://evil.com  → 看 Access-Control-Allow-Origin 是不是 *<br><br><span class="hljs-comment"># 2. 点击劫持</span><br>看 X-Frame-Options / CSP frame-ancestors<br><br><span class="hljs-comment"># 3. 敏感路径</span><br>/actuator/env  → Spring Boot 暴露环境变量<br>/swagger-ui.html<br>/api-docs<br>/graphql<br>/.well-known/openid-configuration<br><br><span class="hljs-comment"># 4. 历史漏洞</span><br>搜 <span class="hljs-string">&quot;xxx系统 漏洞&quot;</span> 看有没有 Nday 可以直接用<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="六、小程序挖掘专章"><a href="#六、小程序挖掘专章" class="headerlink" title="六、小程序挖掘专章"></a>六、小程序挖掘专章</h2><h3 id="6-1-反编译拿源码"><a href="#6-1-反编译拿源码" class="headerlink" title="6.1 反编译拿源码"></a>6.1 反编译拿源码</h3><h4 id="步骤-A：拿到-wxapkg-包"><a href="#步骤-A：拿到-wxapkg-包" class="headerlink" title="步骤 A：拿到 wxapkg 包"></a>步骤 A：拿到 wxapkg 包</h4><p><strong>方法 1：手机抓包</strong></p>
+<ul>
+<li>手机 + Charles &#x2F; Burp 抓包</li>
+<li>进入小程序 → 抓 <code>https://servicewechat.com/...</code> 的请求</li>
+<li>找到 <code>app-config</code> 或 <code>__APP__</code> 路径</li>
+</ul>
+<p><strong>方法 2：PC 端文件系统（最稳）</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs xml">微信 PC 版小程序文件路径（Windows）：<br>C:\Users\<span class="hljs-tag">&lt;<span class="hljs-name">用户名</span>&gt;</span>\Documents\WeChat Files\Applet\<span class="hljs-tag">&lt;<span class="hljs-name">wxid</span>&gt;</span>\<br><br>新版路径（v3.9+）：<br>C:\Users\<span class="hljs-tag">&lt;<span class="hljs-name">用户名</span>&gt;</span>\Documents\WeChat Files\Applet\<span class="hljs-tag">&lt;<span class="hljs-name">wxid</span>&gt;</span>\__APP__.wxapkg<br></code></pre></td></tr></table></figure>
+
+<h4 id="步骤-B：反编译"><a href="#步骤-B：反编译" class="headerlink" title="步骤 B：反编译"></a>步骤 B：反编译</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 工具：wxappUnpacker / WxApkgDecoder</span><br><span class="hljs-comment"># 推荐项目：https://github.com/xxxily/wxapkg-unpacker</span><br><br><span class="hljs-comment"># 1. 解包</span><br>node wuWxapkg.js xxx.wxapkg<br><br><span class="hljs-comment"># 2. 拿到以下文件夹</span><br>- app-service.js / app-service.json  (核心逻辑)<br>- app.js<br>- page-frame.html<br>- 各 page 目录<br><br><span class="hljs-comment"># 3. 格式化代码（用 webstorm / vscode）</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="6-2-反编译后必看的几处"><a href="#6-2-反编译后必看的几处" class="headerlink" title="6.2 反编译后必看的几处"></a>6.2 反编译后必看的几处</h3><p>打开源码，<strong>Ctrl+Shift+F 全局搜索</strong>以下关键词：</p>
+<table>
+<thead>
+<tr>
+<th>关键词</th>
+<th>可能找到</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>http://</code> &#x2F; <code>https://</code></td>
+<td>后端 API 域名</td>
+</tr>
+<tr>
+<td><code>apiKey</code> &#x2F; <code>secret</code> &#x2F; <code>token</code></td>
+<td>密钥 &#x2F; Token</td>
+</tr>
+<tr>
+<td><code>password</code> &#x2F; <code>pwd</code></td>
+<td>写死的管理员密码</td>
+</tr>
+<tr>
+<td><code>aes</code> &#x2F; <code>des</code> &#x2F; <code>md5</code> &#x2F; <code>rsa</code></td>
+<td>加密逻辑（可逆可破）</td>
+</tr>
+<tr>
+<td><code>wx.login</code> &#x2F; <code>getUserInfo</code></td>
+<td>微信鉴权逻辑</td>
+</tr>
+<tr>
+<td><code>appid</code> &#x2F; <code>AppSecret</code></td>
+<td>公众号配置</td>
+</tr>
+<tr>
+<td><code>Bypass</code> &#x2F; <code>debug</code> &#x2F; <code>test</code></td>
+<td>测试逻辑、未发布功能</td>
+</tr>
+<tr>
+<td><code>localStorage</code> &#x2F; <code>setStorageSync</code></td>
+<td>本地存储的敏感数据</td>
+</tr>
+</tbody></table>
+<p><strong>重点</strong>：很多小程序把<strong>管理后台、运营 API、H5 站点</strong>也写在前端，找到就能直接访问。</p>
+<h3 id="6-3-抓包-业务漏洞挖掘"><a href="#6-3-抓包-业务漏洞挖掘" class="headerlink" title="6.3 抓包 + 业务漏洞挖掘"></a>6.3 抓包 + 业务漏洞挖掘</h3><h4 id="配置-Burp-Charles-抓包"><a href="#配置-Burp-Charles-抓包" class="headerlink" title="配置 Burp &#x2F; Charles 抓包"></a>配置 Burp &#x2F; Charles 抓包</h4><ol>
+<li>手机 &#x2F; 模拟器配代理</li>
+<li>安装 CA 证书（抓 HTTPS）</li>
+<li>进入小程序，操作核心功能（登录、查询、支付）</li>
+</ol>
+<h4 id="重点抓的接口"><a href="#重点抓的接口" class="headerlink" title="重点抓的接口"></a>重点抓的接口</h4><ul>
+<li><input disabled="" type="checkbox"> 登录接口（<code>/login</code>、<code>/auth</code>）— 看加密逻辑能不能复现</li>
+<li><input disabled="" type="checkbox"> 用户信息接口（<code>/user/info</code>、<code>/profile</code>）— 改 uid 越权</li>
+<li><input disabled="" type="checkbox"> 列表 &#x2F; 详情接口（<code>/list</code>、<code>/detail</code>）— 翻页 &#x2F; 越权</li>
+<li><input disabled="" type="checkbox"> 支付 &#x2F; 订单接口 — 改金额、并发、重放</li>
+<li><input disabled="" type="checkbox"> 上传接口 — 文件类型绕过、路径穿越</li>
+<li><input disabled="" type="checkbox"> 后台管理接口（如果前端代码里有路径）— 测未授权</li>
+</ul>
+<h4 id="抓包辅助技巧"><a href="#抓包辅助技巧" class="headerlink" title="抓包辅助技巧"></a>抓包辅助技巧</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 1. 装个安卓模拟器（夜神 / MuMu）— 跑小程序比真机方便</span><br><span class="hljs-comment"># 2. 用 frida hook 小程序的加密函数 — 拿到明文请求包</span><br><span class="hljs-comment"># 3. 配合 mitmproxy 写自动化脚本</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="6-4-小程序高频漏洞-TOP-5"><a href="#6-4-小程序高频漏洞-TOP-5" class="headerlink" title="6.4 小程序高频漏洞 TOP 5"></a>6.4 小程序高频漏洞 TOP 5</h3><ol>
+<li><strong>前端硬编码密钥 &#x2F; API 域名</strong> → 直接打后端</li>
+<li><strong>鉴权只看客户端标志</strong>（如 <code>isAdmin=true</code>）→ 改包越权</li>
+<li><strong>登录态可复用 &#x2F; Token 不过期</strong> → 抓包能复用很久</li>
+<li><strong>业务接口水平越权</strong>（改 userId 看别人的数据）</li>
+<li><strong>H5 跳转未过滤</strong>（小程序里嵌的 H5 可能直接打）</li>
+</ol>
+<hr>
+<h2 id="七、推荐工具栈"><a href="#七、推荐工具栈" class="headerlink" title="七、推荐工具栈"></a>七、推荐工具栈</h2><h3 id="必备（上手就要装）"><a href="#必备（上手就要装）" class="headerlink" title="必备（上手就要装）"></a>必备（上手就要装）</h3><ul>
+<li><strong>Burp Suite Pro &#x2F; 社区版</strong> — Web 抓包改包之王</li>
+<li><strong>Chrome &#x2F; Firefox + 插件</strong>（Wappalyzer, FoxyProxy, Cookie Editor）</li>
+<li><strong>Xray &#x2F; Awvs &#x2F; Nuclei</strong> — 自动化漏洞扫描</li>
+<li><strong>dirsearch &#x2F; ffuf</strong> — 目录扫描</li>
+<li><strong>OneForAll &#x2F; subfinder</strong> — 子域收集</li>
+<li><strong>nmap &#x2F; masscan</strong> — 端口扫描</li>
+</ul>
+<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><ul>
+<li><strong>SQLMap</strong> — SQL 注入</li>
+<li><strong>Yakit</strong>（国产，单兵神器，强烈推荐）— 集抓包、扫描、PoC 于一身</li>
+<li><strong>Frida</strong> — 移动端 hook</li>
+<li><strong>jadx &#x2F; jd-gui</strong> — 安卓反编译</li>
+<li><strong>WxApkgDecoder &#x2F; wxappUnpacker</strong> — 小程序反编译</li>
+</ul>
+<h3 id="信息收集"><a href="#信息收集" class="headerlink" title="信息收集"></a>信息收集</h3><ul>
+<li><strong>fofa &#x2F; hunter &#x2F; quake</strong> — 资产测绘</li>
+<li><strong>Google Hacking Database</strong> — 搜索语法库</li>
+<li><strong>Wayback Machine</strong> — 历史页面</li>
+</ul>
+<h3 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h3><ul>
+<li><strong>SecLists</strong> — 渗透测试字典集</li>
+<li><strong>pocsploit</strong> — PoC 集合</li>
+<li><strong>edu 专用弱口令</strong> — <code>top1000-password.txt</code>、高校常见默认 <code>admin@2020</code>、<code>xx@2023</code></li>
+</ul>
+<hr>
+<h2 id="八、报告模板（直接抄）"><a href="#八、报告模板（直接抄）" class="headerlink" title="八、报告模板（直接抄）"></a>八、报告模板（直接抄）</h2><p>提交报告时结构清晰、复现步骤明确能大幅提高通过率。下面是经过多个 SRC 验证的高分模板：</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 漏洞标题</span><br>[<span class="hljs-string">学校名称</span>][<span class="hljs-symbol">系统名称</span>] 漏洞类型（如：SQL 注入 / 越权访问 / 信息泄露）<br><br><span class="hljs-section"># 漏洞等级</span><br>高危 / 中危 / 低危<br><br><span class="hljs-section"># 漏洞 URL</span><br>https://jwc.xxx.edu.cn/xxx?id=1<br><br><span class="hljs-section"># 漏洞描述</span><br>简要说明漏洞原理和危害（一段话）。<br><br><span class="hljs-section"># 漏洞影响</span><br><span class="hljs-bullet">1.</span> 可获取 xxx 数据<br><span class="hljs-bullet">2.</span> 可绕过鉴权执行 xxx 操作<br><span class="hljs-bullet">3.</span> 攻击者利用成本与影响范围<br><br><span class="hljs-section"># 漏洞复现步骤</span><br><span class="hljs-bullet">1.</span> 访问 https://jwc.xxx.edu.cn/xxx<br><span class="hljs-bullet">2.</span> 在 xxx 参数输入 payload：&#x27; AND 1=1--<br><span class="hljs-bullet">3.</span> 观察页面响应（截图）<br><span class="hljs-bullet">4.</span> 进一步利用：sqlmap -u &quot;...&quot; -p id<br><br><span class="hljs-section"># 修复建议</span><br><span class="hljs-bullet">1.</span> 参数化查询 / 使用预编译语句<br><span class="hljs-bullet">2.</span> 启用 WAF / 输入过滤<br><span class="hljs-bullet">3.</span> 最小权限原则<br><span class="hljs-bullet">4.</span> 增加身份验证与日志审计<br><br><span class="hljs-section"># 修复参考</span><br>（贴上对应的官方修复文档或代码示例）<br><br><span class="hljs-section"># 附件</span><br><span class="hljs-bullet">-</span> 截图1：漏洞存在证明<br><span class="hljs-bullet">-</span> 截图2：数据获取证明<br><span class="hljs-bullet">-</span> 截图3：修复建议示意<br></code></pre></td></tr></table></figure>
+
+<p><strong>加分项</strong>：</p>
+<ul>
+<li><input disabled="" type="checkbox"> 提供 PoC 脚本（curl &#x2F; Python）</li>
+<li><input disabled="" type="checkbox"> 提供详细的影响面分析（哪些数据 &#x2F; 多少用户受影响）</li>
+<li><input disabled="" type="checkbox"> 视频复现（对逻辑漏洞特别有效）</li>
+<li><input disabled="" type="checkbox"> 修复 PR（直接给代码更受欢迎）</li>
+</ul>
+<hr>
+<h2 id="九、新手第一个月的行动节奏"><a href="#九、新手第一个月的行动节奏" class="headerlink" title="九、新手第一个月的行动节奏"></a>九、新手第一个月的行动节奏</h2><h3 id="第-1-周：工具熟悉-资产收集"><a href="#第-1-周：工具熟悉-资产收集" class="headerlink" title="第 1 周：工具熟悉 + 资产收集"></a>第 1 周：工具熟悉 + 资产收集</h3><ul>
+<li>装好 Burp、Xray、OneForAll、dirsearch</li>
+<li>选 1 所目标高校，跑完子域 + 端口 + 目录</li>
+<li>把所有信息泄露点（备份、暴露后台、测试站）记下来</li>
+</ul>
+<h3 id="第-2-周：信息泄露-弱口令"><a href="#第-2-周：信息泄露-弱口令" class="headerlink" title="第 2 周：信息泄露 + 弱口令"></a>第 2 周：信息泄露 + 弱口令</h3><ul>
+<li>主攻 GitHub &#x2F; 网盘泄露</li>
+<li>主攻备份文件 &#x2F; 目录遍历</li>
+<li>主攻默认口令 &#x2F; 弱口令</li>
+<li><strong>这一周出第一个单的概率最大</strong></li>
+</ul>
+<h3 id="第-3-周：深度测试-小程序"><a href="#第-3-周：深度测试-小程序" class="headerlink" title="第 3 周：深度测试 + 小程序"></a>第 3 周：深度测试 + 小程序</h3><ul>
+<li>锁定 1-2 个核心系统（教务、OA）做深度测试</li>
+<li>找该校的小程序 &#x2F; 公众号，反编译 + 抓包</li>
+<li>重点查越权 + 逻辑漏洞</li>
+</ul>
+<h3 id="第-4-周：报告-沉淀"><a href="#第-4-周：报告-沉淀" class="headerlink" title="第 4 周：报告 + 沉淀"></a>第 4 周：报告 + 沉淀</h3><ul>
+<li>把所有发现的漏洞写成报告提交</li>
+<li>整理自己常用的 payload 库、字典、工作流</li>
+<li>准备下一个目标</li>
+</ul>
+<hr>
+<h2 id="十、几个重要提醒"><a href="#十、几个重要提醒" class="headerlink" title="十、几个重要提醒"></a>十、几个重要提醒</h2><ol>
+<li><strong>不要越界</strong>：未授权访问拿到数据后，<strong>不要下载、不要传播、不要进一步渗透</strong>，截图证据就够了</li>
+<li><strong>不要 DoS</strong>：别跑大流量扫描、别跑并发攻击</li>
+<li><strong>不要上传真实 WebShell</strong>：文件上传漏洞只验证能不能上传，不放真实木马</li>
+<li><strong>遵守 SRC 规则</strong>：每个平台都有”测试范围”和”禁止行为”，先看规则再动手</li>
+<li><strong>保留完整证据</strong>：从发现到复现全流程录屏 &#x2F; 截图，报告时一目了然</li>
+<li><strong>耐心</strong>：第一单可能 1-2 周才出，正常。edu 站水虽低但也有人在挖，需要找到别人没看到的角度</li>
+</ol>
+<hr>
+<h2 id="十一、资源包（持续更新）"><a href="#十一、资源包（持续更新）" class="headerlink" title="十一、资源包（持续更新）"></a>十一、资源包（持续更新）</h2><ul>
+<li><p>📚 <strong>必读文档</strong></p>
+<ul>
+<li>《Web 漏洞挖掘实战》陈鑫</li>
+<li>《代码审计——企业级 Web 代码安全架构》</li>
+<li>OWASP Testing Guide v4</li>
+<li>PortSwigger Web Security Academy（强烈推荐，免费实操）</li>
+</ul>
+</li>
+<li><p>🎯 <strong>CTF 经验怎么迁移</strong></p>
+<ul>
+<li>注入类：CTF 学到的 payload 直接能用</li>
+<li>越权类：CTF 通常是认证后操作，SRC 要从”未登录能不能访问”开始</li>
+<li>逻辑类：CTF 偏脑筋急转弯，SRC 偏业务流程，要多看实际场景</li>
+</ul>
+</li>
+<li><p>🛠️ <strong>常逛社区</strong></p>
+<ul>
+<li>先知社区（阿里云）</li>
+<li>FreeBuf</li>
+<li>补天 &#x2F; 漏洞盒子 的公开案例</li>
+<li>GitHub 搜 “edu src” 看别人的案例</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="以上使用AI生成"><a href="#以上使用AI生成" class="headerlink" title="以上使用AI生成"></a>以上使用AI生成</h1><blockquote>
+<p>在接下来的一个月阅读上文，我会在后续给上自己的第一个漏洞<br>I wish!</p>
+</blockquote>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>争取暑假拿下第一个EDUsrc漏洞</div>
+      <div>https://harden13131.github.io/2026/07/25/争取暑假拿下第一个EDUsrc漏洞-1/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Harden</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2026年7月25日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2026/07/22/%E6%B5%85%E6%B5%85%E7%9A%84%E4%BA%86%E8%A7%A3%E4%B8%80%E4%B8%8B%E8%B6%8A%E6%9D%83%E6%98%AF%E4%BB%80%E4%B9%88%E4%B8%9C%E4%B8%9C-%E7%8B%97%E5%A4%B4%E4%BF%9D%E5%91%BD-%EF%BC%9F/" title="浅浅的了解一下越权是什么东东(狗头保命)？">
+                        <span class="hidden-mobile">浅浅的了解一下越权是什么东东(狗头保命)？</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    function isExpandAllEnabled() {
+      return CONFIG.toc && CONFIG.toc.expand_all === true;
+    }
+    function expandAllToc() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .tocbot-is-collapsed').removeClass('tocbot-is-collapsed');
+    }
+    function updateTocToggle($li, $childList) {
+      var $toggle = $li.children('.toc-toggle');
+      if ($toggle.length === 0) { return; }
+      var collapsed = $childList.hasClass('tocbot-is-collapsed');
+      $toggle
+        .toggleClass('toc-toggle-collapsed', collapsed)
+        .toggleClass('toc-toggle-expanded', !collapsed);
+    }
+    function bindTocToggle() {
+      if (!isExpandAllEnabled()) { return; }
+      jQuery('#toc-body .toc-list-item').each(function() {
+        var $li = jQuery(this);
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) {
+          if ($li.children('.toc-toggle').length === 0) {
+            $li.prepend('<span class="toc-toggle toc-toggle-placeholder" aria-hidden="true">›</span>');
+          }
+          return;
+        }
+
+        if ($li.children('.toc-toggle').length === 0) {
+          $li.prepend('<span class="toc-toggle toc-toggle-expanded" aria-hidden="true">›</span>');
+        }
+        updateTocToggle($li, $childList);
+      });
+      jQuery('#toc-body').off('click.tocToggle').on('click.tocToggle', '.toc-toggle', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var $li = jQuery(this).parent('.toc-list-item');
+        var $childList = $li.children('ol');
+        if ($childList.length === 0) { return; }
+        $childList.toggleClass('tocbot-is-collapsed');
+        updateTocToggle($li, $childList);
+      });
+      if (!window.__tocToggleObserver) {
+        window.__tocToggleObserver = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.type !== 'attributes' || mutation.attributeName !== 'class') { return; }
+            var $list = jQuery(mutation.target);
+            var $li = $list.parent('.toc-list-item');
+            if ($li.length === 0) { return; }
+            updateTocToggle($li, $list);
+          });
+        });
+        jQuery('#toc-body ol').each(function() {
+          window.__tocToggleObserver.observe(this, { attributes: true });
+        });
+      }
+    }
+    var tocConfig = Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc);
+    if (isExpandAllEnabled()) {
+      tocConfig.collapseDepth = 6;
+    }
+    window.tocbot.init(tocConfig);
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+    expandAllToc();
+    bindTocToggle();
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+        expandAllToc();
+        bindTocToggle();
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
