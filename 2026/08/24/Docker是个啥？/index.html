@@ -19,24 +19,27 @@
   <meta name="author" content="画竹子的熊猫">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言 由于最近开始准备电子取证比赛所以对Linux进一步学习对部分命令进行进一步归纳总结  1. Linux的系统基础 常见的Linux 发行版 DebianOS，以及其衍生版本：Ubuntu、LinuxMint、Deepin、Kali LinuxRedhat，以及其衍生版本：CentOS、Fedora还有其他版本不一一列举  123456789lsb_release -a  查看当前发行版版本u">
+    <meta name="description" content="基本概念 Docker是一个可以把应用和环境打包进一个微型镜像（系统）的地方Docker是一个用于构建,运行,传送,应用程序的平台配置文件、启动命令 应用程序、环境变量 第三方软件库 依赖包运行时环境 操作系统（OS)全部打包     容器（container）和虚拟机（VMARE）的差别 虚拟机需要一个完整的电脑所需要的零件支持 容器只需要相应的依赖资源包 这导致虚拟机所占用资源大大多于容器">
 <meta property="og:type" content="article">
-<meta property="og:title" content="LINUX的基础知识学习">
-<meta property="og:url" content="https://harden13131.github.io/2026/08/12/LINUX%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="Docker是个啥？">
+<meta property="og:url" content="https://harden13131.github.io/2026/08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/index.html">
 <meta property="og:site_name" content="Harden的个人博客">
-<meta property="og:description" content="前言 由于最近开始准备电子取证比赛所以对Linux进一步学习对部分命令进行进一步归纳总结  1. Linux的系统基础 常见的Linux 发行版 DebianOS，以及其衍生版本：Ubuntu、LinuxMint、Deepin、Kali LinuxRedhat，以及其衍生版本：CentOS、Fedora还有其他版本不一一列举  123456789lsb_release -a  查看当前发行版版本u">
+<meta property="og:description" content="基本概念 Docker是一个可以把应用和环境打包进一个微型镜像（系统）的地方Docker是一个用于构建,运行,传送,应用程序的平台配置文件、启动命令 应用程序、环境变量 第三方软件库 依赖包运行时环境 操作系统（OS)全部打包     容器（container）和虚拟机（VMARE）的差别 虚拟机需要一个完整的电脑所需要的零件支持 容器只需要相应的依赖资源包 这导致虚拟机所占用资源大大多于容器">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-08-12T03:40:00.000Z">
-<meta property="article:modified_time" content="2026-08-22T15:27:57.942Z">
+<meta property="og:image" content="https://harden13131.github.io/376cd2c2dcbb996795bb9e7d0c2be419.png">
+<meta property="og:image" content="https://harden13131.github.io/d2fa6c200c58e72b2e6d403a66cf8a24.png">
+<meta property="article:published_time" content="2026-08-24T03:40:53.000Z">
+<meta property="article:modified_time" content="2026-08-24T08:09:16.079Z">
 <meta property="article:author" content="画竹子的熊猫">
-<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Docker 基础知识">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://harden13131.github.io/376cd2c2dcbb996795bb9e7d0c2be419.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>LINUX的基础知识学习 - Harden的个人博客</title>
+  <title>Docker是个啥？ - Harden的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -329,7 +332,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="LINUX的基础知识学习"></span>
+            <span id="subtitle" data-typed-text="Docker是个啥？"></span>
           
         </div>
 
@@ -340,8 +343,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-08-12 11:40" pubdate>
-          2026年8月12日 中午
+        <time datetime="2026-08-24 11:40" pubdate>
+          2026年8月24日 中午
         </time>
       </span>
     
@@ -352,7 +355,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          434 字
         
       </span>
     
@@ -363,7 +366,7 @@
         
         
         
-          23 分钟
+          4 分钟
         
       </span>
     
@@ -402,277 +405,46 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">LINUX的基础知识学习</h1>
+            <h1 id="seo-header">Docker是个啥？</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><blockquote>
-<p>由于最近开始准备电子取证比赛<br>所以对Linux进一步学习<br>对部分命令进行进一步归纳总结</p>
+                <h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><blockquote>
+<p>Docker是一个可以把应用和环境打包进一个微型镜像（系统）的地方<br>Docker是一个用于构建,运行,传送,应用程序的平台<br>配置文件、启动命令 应用程序、环境变量 第三方软件库 依赖包运行时环境 操作系统（OS)全部打包   </p>
 </blockquote>
-<h2 id="1-Linux的系统基础"><a href="#1-Linux的系统基础" class="headerlink" title="1. Linux的系统基础"></a>1. Linux的系统基础</h2><ol>
-<li>常见的Linux 发行版<blockquote>
-<p>DebianOS，以及其衍生版本：Ubuntu、LinuxMint、Deepin、Kali Linux<br>Redhat，以及其衍生版本：CentOS、Fedora<br>还有其他版本不一一列举</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs bash">lsb_release -a  <br>查看当前发行版版本<br><span class="hljs-built_in">uname</span> -a<br>即把所有的系统详细参数一口气输出<br><span class="hljs-built_in">cat</span> \etc\issue <br><span class="hljs-built_in">cat</span> \etc\issue[dot]net <br><span class="hljs-built_in">cat</span> \etc\lsb-release <br><span class="hljs-built_in">cat</span> \etc\os-release<br>查找\etc 中的文件<br></code></pre></td></tr></table></figure></li>
+<h2 id="容器（container）和虚拟机（VMARE）的差别"><a href="#容器（container）和虚拟机（VMARE）的差别" class="headerlink" title="容器（container）和虚拟机（VMARE）的差别"></a>容器（container）和虚拟机（VMARE）的差别</h2><ol>
+<li>虚拟机需要一个完整的电脑所需要的零件支持</li>
+<li>容器只需要相应的依赖资源包</li>
+<li>这导致虚拟机所占用资源大大多于容器 </li>
+<li>两者都依赖于物理机</li>
 </ol>
-<h2 id="2-Linux-系统的典型目录结构"><a href="#2-Linux-系统的典型目录结构" class="headerlink" title="2. Linux 系统的典型目录结构"></a>2. Linux 系统的典型目录结构</h2><table>
-<thead>
-<tr>
-<th align="left">目录</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>&#x2F;</strong></td>
-<td align="left">根目录，根目录下一般只有以下文件夹，没有文件|</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;bin</strong></td>
-<td align="left">存放了系统命令的可执行文件，例如cat、vi，相当于Windows 的系统环境变量PATH</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc</strong></td>
-<td align="left">存放了系统配置，例如release</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;home</strong></td>
-<td align="left">用户文件夹，例如&#x2F;home&#x2F;user1 ，&#x2F;home&#x2F;user2</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr</strong></td>
-<td align="left">存放了用户应用的可执行文件、代码、动态链接库等，相当于Windows 的用户环境变量PATH</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;bin</strong></td>
-<td align="left">用户安装的应用的可执行文件</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;doc</strong></td>
-<td align="left">Linux 文档</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;include</strong></td>
-<td align="left">头文件目录</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;lib</strong></td>
-<td align="left">存放动态链接库、软件包配置文件</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;man</strong></td>
-<td align="left">执行man命令显示的帮助文档</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;src</strong></td>
-<td align="left">源代码，例如Linux内核源码：&#x2F;usr&#x2F;src&#x2F;linux</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;usr&#x2F;local</strong></td>
-<td align="left">本机单独增加的命令、动态链接库</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;lib</strong></td>
-<td align="left">存放跟文件系统中的程序运行所需要的共享库及内核模块。共享库又叫动态链接共享库，作用类似windows里的.dll文件，存放了根文件系统程序运行所需的共享文件</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;var</strong></td>
-<td align="left">日志</td>
-</tr>
-</tbody></table>
-<h2 id="3-Linux-系统重要文件夹与文件的内容"><a href="#3-Linux-系统重要文件夹与文件的内容" class="headerlink" title="3. Linux 系统重要文件夹与文件的内容"></a>3. Linux 系统重要文件夹与文件的内容</h2><table>
-<thead>
-<tr>
-<th align="left">名字</th>
-<th align="left">说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left"><strong>&#x2F;etc&#x2F;passwd</strong></td>
-<td align="left">保存了用户数据库，其中包括用户名、加密过的密码等（<em>所以极其重要</em>）</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;group</strong></td>
-<td align="left">保存了用户组的信息</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;issue</strong></td>
-<td align="left">默认是发行版信息BUT文件里的内容用来显示在每次登录系统后终端显示的欢迎文字</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;var&#x2F;log</strong></td>
-<td align="left">保存了许多程序的日志文件，例如登录日志</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;sys&#x2F;class&#x2F;net</strong></td>
-<td align="left">存储了各个网卡信息</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;timezone</strong></td>
-<td align="left">时区信息：Asia&#x2F;Shanghai</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;system-release</strong></td>
-<td align="left">发行版信息：CentOS Linux release 7.3.1611 (Core)</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;locale.conf</strong></td>
-<td align="left">系统使用语言：LANG&#x3D;en_US.UTF-8</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;hostname</strong></td>
-<td align="left">主机名称</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;motd</strong></td>
-<td align="left">登录欢迎语：Welcome to Alibaba Cloud Elastic Compute Service !</td>
-</tr>
-<tr>
-<td align="left"><strong>&#x2F;etc&#x2F;resolv.conf</strong></td>
-<td align="left">使用的DNS 地址</td>
-</tr>
-</tbody></table>
-<h2 id="4-Linux-文件的属性（File-Attribute）"><a href="#4-Linux-文件的属性（File-Attribute）" class="headerlink" title="4. Linux 文件的属性（File Attribute）"></a>4. Linux 文件的属性（File Attribute）</h2><blockquote>
-<p>查看文件或文件夹的权限<br>使用<code>ls -l filename</code>命令来查看文件的权限，例如：<br>-rw-r–r– 1 root root 298 Sep 30 21:31 os-release</p>
+<h2 id="基本原理和概念"><a href="#基本原理和概念" class="headerlink" title="基本原理和概念"></a>基本原理和概念</h2><ol>
+<li><strong>镜像</strong>：是一个模板</li>
+<li><strong>容器</strong>：镜像中的一个实例</li>
+<li><strong>仓库</strong>：存储Docker镜像的地方（Dockerhub）</li>
+</ol>
+<h2 id="Docker的安装"><a href="#Docker的安装" class="headerlink" title="Docker的安装"></a>Docker的安装</h2><blockquote>
+<p>只需去官网下载即可<br>可能会遇到WSL服务没有启用的情况</p>
 </blockquote>
-<ul>
-<li>第一个字符 - 代表这是一个文件，d表示目录（即文件夹，在Linux内，文件夹也是一种特殊的文件），l表示链接  </li>
-<li>接下来三个字符rw- 表示文件的所有者对该文件可读（r，read）可写（w，write）但不可运行（x）</li>
-<li>之后三个字符r– 表示文件所有者所在的用户组 的其他用户们 对该文件可读，不可写，不可运行  </li>
-<li>最后三个r– 表示其他用户对该文件可读，不可写，不可运行  </li>
-<li>数字1表示链接的文件数（与l类型的文件有关）  </li>
-<li>之后的root 表示为文件所属的用户  </li>
-<li>第二个root 表示为文件所属的用户（即root用户）所在的用户组为root用户组  </li>
-<li>Sep 30 21:31 表示文件最后的更改日期  </li>
-<li>os-release 为文件名<blockquote>
-<p>如何修改文件或文件夹的权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">win+R<br>services.msc<br></code></pre></td></tr></table></figure>
+<p><img src="/376cd2c2dcbb996795bb9e7d0c2be419.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><strong>找到并启用就可以啦</strong></p>
+<h2 id="容器化"><a href="#容器化" class="headerlink" title="容器化"></a>容器化</h2><blockquote>
+<p>顾名思义将应用程序打包进容器<br>然后再容器中运行程序</p>
 </blockquote>
-</li>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><ol>
+<li>创建一个Dockerfile</li>
+<li>使用Dockerfile构建镜像</li>
+<li>使用镜像创建和运行容器</li>
+</ol>
+<h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><blockquote>
+<p>包含一条条指令<br>来教Docker怎么构造镜像<br><img src="/d2fa6c200c58e72b2e6d403a66cf8a24.png" srcset="/img/loading.gif" lazyload alt="例如"></p>
+</blockquote>
+<h1 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h1><ul>
+<li>编写Dockerfile </li>
+<li>构建镜像</li>
+<li>启动容器</li>
 </ul>
-<ol>
-<li>使用数字表示:<br>例如：rw-r–r–，以二进制表示为110,100,100，即644<br><code>chmod 644 os-release</code><br>例如 rwxrw-r–，以二进制表示为111,110,100，即764<br><code>chmod 764 os-release</code><blockquote>
-<p>chmod 可以看作 对一个文件的mode进行设置</p>
-</blockquote>
-</li>
-</ol>
-<table>
-<thead>
-<tr>
-<th align="left">字母</th>
-<th align="left">含义</th>
-<th align="left">对应的位值</th>
-<th align="left">二进制位</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">r</td>
-<td align="left">read 读</td>
-<td align="left">4</td>
-<td align="left">第 3 位 (2²)</td>
-</tr>
-<tr>
-<td align="left">w</td>
-<td align="left">write 写</td>
-<td align="left">2</td>
-<td align="left">第 2 位 (2¹)</td>
-</tr>
-<tr>
-<td align="left">x</td>
-<td align="left">execute 执行</td>
-<td align="left">1</td>
-<td align="left">第 1 位 (2⁰)</td>
-</tr>
-<tr>
-<td align="left">2. 使用字母表示</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>chmod u+x os-release</code></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">表示给文件所属的用户（u）增加（+）运行（x）权限；</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>chmod g-wx os-release</code></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">表示给文件所属用户的用户组（g）去除（-）写权限（w）和运行权限（x）</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>chmod o+wx os-release</code></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">表示给文件所属用户用户组之外的用户（o）增加（+）写权限（w）和运行权限（x）</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>chmod a+r os-release</code></td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">表示给所有用户（a）增加读（r）权限</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left">3. 改变文件所有者</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><strong>chown</strong>命令（change owner）</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>chown user1 os-release</code> 将os-release文件所有者改为user1</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><strong>chgrp</strong>命令（change group）</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-<tr>
-<td align="left"><code>chgrp basic—user os-release</code> 将os-release文件所属用户组改为basic-user</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left"></td>
-</tr>
-</tbody></table>
-<h2 id="5-文件系统（File-System）"><a href="#5-文件系统（File-System）" class="headerlink" title="5. 文件系统（File System）"></a>5. 文件系统（File System）</h2><p>当前的Linux 正在使用什么文件系统，可以在 &#x2F;etc&#x2F;fstab 文件中查看，通常为ext4<br>Windows 通常为NTFS<br>&#x2F;&#x2F;TODO: 等待完成</p>
-<h2 id="6-常见的系统功能"><a href="#6-常见的系统功能" class="headerlink" title="6. 常见的系统功能"></a>6. 常见的系统功能</h2><h3 id="1-NTP-时间同步"><a href="#1-NTP-时间同步" class="headerlink" title="1. NTP 时间同步"></a>1. NTP 时间同步</h3><p>NTP 服务使用UDP123 端口与NTP服务器通信，更新系统时间，ntp 服务器配置保存在&#x2F;etc&#x2F;ntp.conf 文件中</p>
-<h3 id="2-Bash"><a href="#2-Bash" class="headerlink" title="2. Bash"></a>2. Bash</h3><p>与Windows 的cmd 或PowerShell 类似，Linux 使用Bash 来进行系统交互。（也有oh-my-zsh等） </p>
-<blockquote>
-<p>后面会有进一步解释 &#x3D;&#x3D;&#x3D;&#x3D;{</p>
-</blockquote>
 
                 
               </div>
@@ -685,7 +457,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+        <a href="/tags/Docker-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="print-no-link">#Docker 基础知识</a>
       
     </div>
   
@@ -697,8 +469,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>LINUX的基础知识学习</div>
-      <div>https://harden13131.github.io/2026/08/12/LINUX的基础知识学习/</div>
+      <div>Docker是个啥？</div>
+      <div>https://harden13131.github.io/2026/08/24/Docker是个啥？/</div>
     </div>
     <div class="license-meta">
       
@@ -710,7 +482,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年8月12日</div>
+          <div>2026年8月24日</div>
         </div>
       
       
@@ -742,18 +514,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/" title="Docker是个啥？">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Docker是个啥？</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/" title="xss（跨站脚本）漏洞的学习g">
-                        <span class="hidden-mobile">xss（跨站脚本）漏洞的学习g</span>
+                      <a href="/2026/08/12/LINUX%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="LINUX的基础知识学习">
+                        <span class="hidden-mobile">LINUX的基础知识学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
