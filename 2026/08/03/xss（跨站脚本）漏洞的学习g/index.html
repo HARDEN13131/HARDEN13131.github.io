@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/fluid.png">
+  <link rel="icon" href="../../../../img/fluid.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -26,21 +26,21 @@
 <meta property="og:site_name" content="Harden的个人博客">
 <meta property="og:description" content="前言 跨站脚本（Cross-Site Scripting，XSS）XSS是一种发生在前端浏览器端的漏洞，所以其危害的对象也是前端用户。其目的一般都是为了攻击用户，拿到用户的Cookies等信息。  xss的成因123页面会将输入的内容进行渲染并插入到网页的html中，  这便导致了攻击者可以构造合适的js代码payload，  使得用户再点击链接时自动把注入的内容当作js代码执行，导致用户相关敏感">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://harden13131.github.io/img/image-1.png">
-<meta property="og:image" content="https://harden13131.github.io/4ba62cd261268453a0b2d81e8b94f57b.png">
-<meta property="og:image" content="https://harden13131.github.io/1c13e7cf1550862cb513046f9e3fd821.png">
-<meta property="og:image" content="https://harden13131.github.io/fac87025193aa76a0855e1eb9f2787e5.png">
-<meta property="og:image" content="https://harden13131.github.io/2a031bdb92f599da62ca05db16d9a255.png">
-<meta property="og:image" content="https://harden13131.github.io/7680f5feb3b77b250cefda38d713270f.png">
-<meta property="og:image" content="https://harden13131.github.io/4a83f3e19d2538ad7c7f97f82eb88404.png">
-<meta property="og:image" content="https://harden13131.github.io/2abbb16119b84b281fd832d65131858e.png">
-<meta property="og:image" content="https://harden13131.github.io/eaee864c9d591c56988da0bdada899a7.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/img/image-1.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/4ba62cd261268453a0b2d81e8b94f57b.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/1c13e7cf1550862cb513046f9e3fd821.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/fac87025193aa76a0855e1eb9f2787e5.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/2a031bdb92f599da62ca05db16d9a255.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/7680f5feb3b77b250cefda38d713270f.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/4a83f3e19d2538ad7c7f97f82eb88404.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/2abbb16119b84b281fd832d65131858e.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/eaee864c9d591c56988da0bdada899a7.png">
 <meta property="article:published_time" content="2026-08-03T02:29:53.000Z">
-<meta property="article:modified_time" content="2026-09-05T11:28:03.050Z">
+<meta property="article:modified_time" content="2026-09-07T03:46:44.594Z">
 <meta property="article:author" content="画竹子的熊猫">
 <meta property="article:tag" content="xss top10">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://harden13131.github.io/img/image-1.png">
+<meta name="twitter:image" content="https://harden13131.github.io/2026/08/03/xss%EF%BC%88%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%EF%BC%89%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0g/img/image-1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -70,18 +70,18 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="../../../../css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
   
 
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
 
 
 
@@ -95,8 +95,8 @@
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
   
 
 
@@ -133,7 +133,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="../../../../index.html">
       <strong>Fluid</strong>
     </a>
 
@@ -152,7 +152,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
+              <a class="nav-link" href="../../../../index.html" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -164,7 +164,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
+              <a class="nav-link" href="../../../../archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -176,7 +176,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
+              <a class="nav-link" href="../../../../categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -188,7 +188,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
+              <a class="nav-link" href="../../../../tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -200,7 +200,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
+              <a class="nav-link" href="../../../../about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -238,7 +238,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/" target="_self">
+              <a href="../../../../index.html" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
                   <span>首页</span>
@@ -252,7 +252,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/archives/" target="_self">
+              <a href="../../../../archives/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-archive-fill"></i>
                   <span>归档</span>
@@ -266,7 +266,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/categories/" target="_self">
+              <a href="../../../../categories/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-category-fill"></i>
                   <span>分类</span>
@@ -280,7 +280,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/tags/" target="_self">
+              <a href="../../../../tags/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-tags-fill"></i>
                   <span>标签</span>
@@ -294,7 +294,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/about/" target="_self">
+              <a href="../../../../about/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-user-fill"></i>
                   <span>关于</span>
@@ -333,7 +333,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('../../../../img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -421,23 +421,23 @@
 <p>跨站脚本（Cross-Site Scripting，XSS）<br>XSS是一种发生在<code>前端</code>浏览器端的漏洞，所以其危害的对象也是前端用户。<br>其目的一般都是为了攻击用户，拿到用户的Cookies等信息。</p>
 </blockquote>
 <h2 id="xss的成因"><a href="#xss的成因" class="headerlink" title="xss的成因"></a>xss的成因</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">页面会将输入的内容进行渲染并插入到网页的html中，  <br>这便导致了攻击者可以构造合适的js代码payload，  <br>使得用户再点击链接时自动把注入的内容当作js代码执行，导致用户相关敏感信息泄露。  <br></code></pre></td></tr></table></figure>
-<h1 id="分类-—-以pikachu靶场里的题目为例子"><a href="#分类-—-以pikachu靶场里的题目为例子" class="headerlink" title="分类 — 以pikachu靶场里的题目为例子"></a>分类 — 以pikachu靶场里的题目为例子</h1><h2 id="1-反射型xss"><a href="#1-反射型xss" class="headerlink" title="1.反射型xss"></a>1.反射型xss</h2><h3 id="反射型xss（get）-主动出击"><a href="#反射型xss（get）-主动出击" class="headerlink" title="反射型xss（get）  主动出击"></a>反射型xss（get）  <code>主动出击</code></h3><p><img src="/./img/image-1.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="分类-—-以pikachu靶场里的题目为例子"><a href="#分类-—-以pikachu靶场里的题目为例子" class="headerlink" title="分类 — 以pikachu靶场里的题目为例子"></a>分类 — 以pikachu靶场里的题目为例子</h1><h2 id="1-反射型xss"><a href="#1-反射型xss" class="headerlink" title="1.反射型xss"></a>1.反射型xss</h2><h3 id="反射型xss（get）-主动出击"><a href="#反射型xss（get）-主动出击" class="headerlink" title="反射型xss（get）  主动出击"></a>反射型xss（get）  <code>主动出击</code></h3><p><img src="./img/image-1.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
 <p>在根据提示输入kobe之后会有输出<br>可以在url处发现<code>?message=kobe&amp;submit=submit</code>  </p>
 </blockquote>
-<p><img src="/4ba62cd261268453a0b2d81e8b94f57b.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="4ba62cd261268453a0b2d81e8b94f57b.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <blockquote>
 <p>在这里发现了输入恶意代码被限制长度<br>于是查看源码<br>发现maxlength为20<br>在前端进行修改<br><strong>ps：关于maxlength前端方面知识的介绍会在下一篇文章讲解</strong>  </p>
 </blockquote>
-<p><img src="/1c13e7cf1550862cb513046f9e3fd821.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="/fac87025193aa76a0855e1eb9f2787e5.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="1c13e7cf1550862cb513046f9e3fd821.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="fac87025193aa76a0855e1eb9f2787e5.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <blockquote>
 <p>因此在这种情况最应提防不该点的钓鱼链接<br>黑客需要构造精妙的陷阱（钓鱼链接）<br>你掉进陷阱拉！！！</p>
 </blockquote>
-<h3 id="反射型xss（post）"><a href="#反射型xss（post）" class="headerlink" title="反射型xss（post）"></a>反射型xss（post）</h3><p><img src="/2a031bdb92f599da62ca05db16d9a255.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h3 id="反射型xss（post）"><a href="#反射型xss（post）" class="headerlink" title="反射型xss（post）"></a>反射型xss（post）</h3><p><img src="2a031bdb92f599da62ca05db16d9a255.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <blockquote>
-<p>大体上和GET的流程一样<br>但是POST的参数是不在URL中的<br>只能用抓包工具查看<br><img src="/7680f5feb3b77b250cefda38d713270f.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>大体上和GET的流程一样<br>但是POST的参数是不在URL中的<br>只能用抓包工具查看<br><img src="7680f5feb3b77b250cefda38d713270f.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 </blockquote>
-<h2 id="2-存储型XSS"><a href="#2-存储型XSS" class="headerlink" title="2.存储型XSS"></a>2.存储型XSS</h2><p><img src="/4a83f3e19d2538ad7c7f97f82eb88404.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<h2 id="2-存储型XSS"><a href="#2-存储型XSS" class="headerlink" title="2.存储型XSS"></a>2.存储型XSS</h2><p><img src="4a83f3e19d2538ad7c7f97f82eb88404.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <blockquote>
 <p>可以直接在留言板里面写入<br>你输入一次他就会一直留下来<br>你每次打开这个网页他都会给你弹窗<br>顾名思义 存储型<br>存储型 XSS 的数据最终保存在服务器端的<code>数据库（Database）</code>中<br>持久性： 因为存储在数据库里，这些数据不会因为你关闭浏览器或重启电脑而消失  </p>
 </blockquote>
@@ -450,7 +450,7 @@
 <p>而DOM型xss其本质是前端开发中对不可信数据缺乏安全处理所导致的逻辑缺陷<br>攻击完全发生在客户端，不与服务器交互<br>通过javascript操作DOM元素实现攻击  </p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript"><span class="hljs-attr">javascript</span>:<span class="hljs-title function_">alert</span>(<span class="hljs-string">&quot;XSS&quot;</span>)<br></code></pre></td></tr></table></figure>
-<img src="/2abbb16119b84b281fd832d65131858e.png" srcset="/img/loading.gif" lazyload alt="alt text"><blockquote>
+<img src="2abbb16119b84b281fd832d65131858e.png" srcset="/img/loading.gif" lazyload alt="alt text"><blockquote>
 <p>第一步实现了存储在dom（id）<br>第二步实现了链接的执行<br>第三步实现了弹窗</p>
 </blockquote>
 </li>
@@ -466,7 +466,7 @@
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs JavaScript">&lt;img src=<span class="hljs-number">1</span> onerror=<span class="hljs-title function_">alert</span>(<span class="hljs-number">1</span>)&gt;<br></code></pre></td></tr></table></figure>
 
-<p><img src="/eaee864c9d591c56988da0bdada899a7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p><img src="eaee864c9d591c56988da0bdada899a7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h2 id="6-xss之href输出"><a href="#6-xss之href输出" class="headerlink" title="6.xss之href输出"></a>6.xss之href输出</h2><blockquote>
 <p>href 属性原生支持 <code>javascript:</code> 伪协议。<br>javascript:alert(1)</p>
 </blockquote>
@@ -482,7 +482,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/xss-top10/" class="print-no-link">#xss top10</a>
+        <a href="../../../../tags/xss-top10/" class="print-no-link">#xss top10</a>
       
     </div>
   
@@ -539,7 +539,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/08/12/LINUX%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="LINUX的基础知识学习">
+                      <a href="../../12/LINUX%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="LINUX的基础知识学习">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">LINUX的基础知识学习</span>
                         <span class="visible-mobile">上一篇</span>
@@ -549,7 +549,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/07/30/BP%E7%9A%84%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="BP的学习（一）">
+                      <a href="../../../07/30/BP%E7%9A%84%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="BP的学习（一）">
                         <span class="hidden-mobile">BP的学习（一）</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -704,8 +704,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -727,7 +727,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="../../../../js/img-lazyload.js" ></script>
   
 
 
@@ -890,7 +890,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="../../../../js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -900,7 +900,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="../../../../js/boot.js" ></script>
 
 
   

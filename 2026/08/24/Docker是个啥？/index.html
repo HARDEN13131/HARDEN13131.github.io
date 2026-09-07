@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/fluid.png">
+  <link rel="icon" href="../../../../img/fluid.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -26,14 +26,14 @@
 <meta property="og:site_name" content="Harden的个人博客">
 <meta property="og:description" content="基本概念 Docker是一个可以把应用和环境打包进一个微型镜像（系统）的地方Docker是一个用于构建,运行,传送,应用程序的平台配置文件、启动命令 应用程序、环境变量 第三方软件库 依赖包运行时环境 操作系统（OS)全部打包     容器（container）和虚拟机（VMARE）的差别 虚拟机需要一个完整的电脑所需要的零件支持 容器只需要相应的依赖资源包 这导致虚拟机所占用资源大大多于容器">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://harden13131.github.io/376cd2c2dcbb996795bb9e7d0c2be419.png">
-<meta property="og:image" content="https://harden13131.github.io/d2fa6c200c58e72b2e6d403a66cf8a24.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/376cd2c2dcbb996795bb9e7d0c2be419.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/d2fa6c200c58e72b2e6d403a66cf8a24.png">
 <meta property="article:published_time" content="2026-08-24T03:40:53.000Z">
-<meta property="article:modified_time" content="2026-08-24T08:09:16.079Z">
+<meta property="article:modified_time" content="2026-09-07T08:05:11.973Z">
 <meta property="article:author" content="画竹子的熊猫">
 <meta property="article:tag" content="Docker 基础知识">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://harden13131.github.io/376cd2c2dcbb996795bb9e7d0c2be419.png">
+<meta name="twitter:image" content="https://harden13131.github.io/2026/08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/376cd2c2dcbb996795bb9e7d0c2be419.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -63,18 +63,18 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="../../../../css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
   
 
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
 
 
 
@@ -88,8 +88,8 @@
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
   
 
 
@@ -126,7 +126,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="../../../../index.html">
       <strong>Fluid</strong>
     </a>
 
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
+              <a class="nav-link" href="../../../../index.html" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
+              <a class="nav-link" href="../../../../archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
+              <a class="nav-link" href="../../../../categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
+              <a class="nav-link" href="../../../../tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -193,7 +193,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
+              <a class="nav-link" href="../../../../about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -231,7 +231,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/" target="_self">
+              <a href="../../../../index.html" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
                   <span>首页</span>
@@ -245,7 +245,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/archives/" target="_self">
+              <a href="../../../../archives/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-archive-fill"></i>
                   <span>归档</span>
@@ -259,7 +259,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/categories/" target="_self">
+              <a href="../../../../categories/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-category-fill"></i>
                   <span>分类</span>
@@ -273,7 +273,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/tags/" target="_self">
+              <a href="../../../../tags/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-tags-fill"></i>
                   <span>标签</span>
@@ -287,7 +287,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/about/" target="_self">
+              <a href="../../../../about/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-user-fill"></i>
                   <span>关于</span>
@@ -326,7 +326,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('../../../../img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -428,7 +428,7 @@
 <p>只需去官网下载即可<br>可能会遇到WSL服务没有启用的情况</p>
 </blockquote>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">win+R<br>services.msc<br></code></pre></td></tr></table></figure>
-<p><img src="/376cd2c2dcbb996795bb9e7d0c2be419.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><strong>找到并启用就可以啦</strong></p>
+<p><img src="376cd2c2dcbb996795bb9e7d0c2be419.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><strong>找到并启用就可以啦</strong></p>
 <h2 id="容器化"><a href="#容器化" class="headerlink" title="容器化"></a>容器化</h2><blockquote>
 <p>顾名思义将应用程序打包进容器<br>然后再容器中运行程序</p>
 </blockquote>
@@ -438,7 +438,7 @@
 <li>使用镜像创建和运行容器</li>
 </ol>
 <h3 id="Dockerfile"><a href="#Dockerfile" class="headerlink" title="Dockerfile"></a>Dockerfile</h3><blockquote>
-<p>包含一条条指令<br>来教Docker怎么构造镜像<br><img src="/d2fa6c200c58e72b2e6d403a66cf8a24.png" srcset="/img/loading.gif" lazyload alt="例如"></p>
+<p>包含一条条指令<br>来教Docker怎么构造镜像<br><img src="d2fa6c200c58e72b2e6d403a66cf8a24.png" srcset="/img/loading.gif" lazyload alt="例如"></p>
 </blockquote>
 <h1 id="工作流"><a href="#工作流" class="headerlink" title="工作流"></a>工作流</h1><ul>
 <li>编写Dockerfile </li>
@@ -457,7 +457,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Docker-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="print-no-link">#Docker 基础知识</a>
+        <a href="../../../../tags/Docker-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="print-no-link">#Docker 基础知识</a>
       
     </div>
   
@@ -514,11 +514,17 @@
                   <article class="post-prev col-6">
                     
                     
+                      <a href="../../../09/07/CSRF-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0-%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="CSRF(跨站请求伪造)漏洞的学习">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">CSRF(跨站请求伪造)漏洞的学习</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/08/12/LINUX%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="LINUX的基础知识学习">
+                      <a href="../../12/LINUX%E7%9A%84%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%AD%A6%E4%B9%A0/" title="LINUX的基础知识学习">
                         <span class="hidden-mobile">LINUX的基础知识学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -673,8 +679,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -696,7 +702,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="../../../../js/img-lazyload.js" ></script>
   
 
 
@@ -859,7 +865,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="../../../../js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -869,7 +875,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="../../../../js/boot.js" ></script>
 
 
   

