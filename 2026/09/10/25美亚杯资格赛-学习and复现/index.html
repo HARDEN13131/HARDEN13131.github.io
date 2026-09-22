@@ -19,21 +19,38 @@
   <meta name="author" content="画竹子的熊猫">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="CSRF(跨站请求伪造)漏洞的学习">
-<meta property="og:url" content="https://harden13131.github.io/2026/09/07/CSRF-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0-%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
+    <meta name="description" content="案件复述 陈民浩与冯子超貌似起了争执，导致冯子超头部受伤昏迷而陈民浩则因涉嫌“伤人”罪被警方当场拘捕，被捕后一直保持缄默，拒绝交代案情细节。进一步调查显示，两人冲突疑因女子梁燕玲而起。根据现场迹象推断，梁燕玲曾于事发时在场出现也许她跟这件事情有着不可告人的秘密:）  作为初学者的步骤 下载文件 使用Vera crypt进行虚拟化在盘 打开美亚取证大师，因为是手机镜像所以 开始干活 又有一个关键点,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="25美亚杯资格赛 学习and复现">
+<meta property="og:url" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/index.html">
 <meta property="og:site_name" content="Harden的个人博客">
+<meta property="og:description" content="案件复述 陈民浩与冯子超貌似起了争执，导致冯子超头部受伤昏迷而陈民浩则因涉嫌“伤人”罪被警方当场拘捕，被捕后一直保持缄默，拒绝交代案情细节。进一步调查显示，两人冲突疑因女子梁燕玲而起。根据现场迹象推断，梁燕玲曾于事发时在场出现也许她跟这件事情有着不可告人的秘密:）  作为初学者的步骤 下载文件 使用Vera crypt进行虚拟化在盘 打开美亚取证大师，因为是手机镜像所以 开始干活 又有一个关键点,">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-07T02:40:40.000Z">
-<meta property="article:modified_time" content="2026-09-07T02:40:40.617Z">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/138604ea49903ce8175e0ff746da8b3a.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/3a58d5d4e5c2374806e6e5b12c9004be_720.jpg">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/6050388fb3c765ecdc24595deeb478c1.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/ce493b108956babd617937c424244b02.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/fb104d87c8e6d0568142337a9a9ddea8.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/c5a6975af527a0e19d76c73db3f285f5.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/cd91963433da77cbbf87593f132d30ce.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/9c128dcf5ecba62ca2986bab2f7553c2.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/ad98142a2d11057ee98f128827400696.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/17f5bbc6353c788259742ccaa69b9027.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/55afc2915c8a25ce4d4f0a149c24a1c0.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/b853e65e0da01db448f621e54030cbf7.png">
+<meta property="og:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/18733ad26f08bd4396f6cda14c7c08ce.png">
+<meta property="article:published_time" content="2026-09-10T07:07:31.000Z">
+<meta property="article:modified_time" content="2026-09-19T09:07:05.362Z">
 <meta property="article:author" content="画竹子的熊猫">
+<meta property="article:tag" content="电子取证 美亚杯">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://harden13131.github.io/2026/09/10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/138604ea49903ce8175e0ff746da8b3a.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CSRF(跨站请求伪造)漏洞的学习 - Harden的个人博客</title>
+  <title>25美亚杯资格赛 学习and复现 - Harden的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -326,7 +343,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSRF(跨站请求伪造)漏洞的学习"></span>
+            <span id="subtitle" data-typed-text="25美亚杯资格赛 学习and复现"></span>
           
         </div>
 
@@ -337,8 +354,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-07 10:40" pubdate>
-          2026年9月7日 上午
+        <time datetime="2026-09-10 15:07" pubdate>
+          2026年9月10日 下午
         </time>
       </span>
     
@@ -349,7 +366,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          3.1k 字
         
       </span>
     
@@ -360,7 +377,7 @@
         
         
         
-          1 分钟
+          26 分钟
         
       </span>
     
@@ -399,12 +416,208 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSRF(跨站请求伪造)漏洞的学习</h1>
+            <h1 id="seo-header">25美亚杯资格赛 学习and复现</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="案件复述"><a href="#案件复述" class="headerlink" title="案件复述"></a>案件复述</h1><blockquote>
+<p>陈民浩与冯子超貌似起了争执，导致冯子超头部受伤昏迷<br>而陈民浩则因涉嫌“伤人”罪被警方当场拘捕，被捕后一直保持缄默，拒绝交代案情细节。<br>进一步调查显示，两人冲突疑因女子梁燕玲而起。<br>根据现场迹象推断，梁燕玲曾于事发时在场出现<br>也许她跟这件事情有着不可告人的秘密:）</p>
+</blockquote>
+<h2 id="作为初学者的步骤"><a href="#作为初学者的步骤" class="headerlink" title="作为初学者的步骤"></a>作为初学者的步骤</h2><ol>
+<li>下载文件<br><img src="138604ea49903ce8175e0ff746da8b3a.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>使用Vera crypt进行虚拟化在盘<br><img src="3a58d5d4e5c2374806e6e5b12c9004be_720.jpg" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>打开美亚取证大师，因为是手机镜像所以<br><img src="6050388fb3c765ecdc24595deeb478c1.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>开始干活</li>
+<li>又有一个关键点,这个是香港按东八区,所以加八小时</li>
+</ol>
+<h2 id="题目复现"><a href="#题目复现" class="headerlink" title="题目复现"></a>题目复现</h2><ol start="25">
+<li>请参考参赛材料FUNG_CC_mobile.zip回答以下问题这部智能手机连接过多少个 Wi-Fi 网络？(请以阿拉伯数字作答)<blockquote>
+<p>简单<br>直接在取证大师里面打开<strong>FUNG_CC_mobile.zip</strong><br><img src="ce493b108956babd617937c424244b02.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>⚠️：这里指的是wifi，第三个是热点  </p>
+</blockquote>
+</li>
+<li>这部智能手机曾经连接过以下哪个无线网络？i) THREE_WIFIii) wanchaiiii)iPhone(2)iv) Router<blockquote>
+<p>简单<br>由上图可知</p>
+</blockquote>
+</li>
+<li>这部手提手机最早连接(<code>非热点</code>)Wi-Fi的时间是什么？(请以GMT +8时区及以下格式作答: yyyy-MM-dd HH:mm:ss)<blockquote>
+<p>PS:这些是这道题目会遇到的问题<br>都是苹果WIFI的特定文件名<br>可以适当看看</p>
+</blockquote>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>文件名</th>
+<th>主要作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>com.apple.wifi.known-networks.plist</code></td>
+<td>已知&#x2F;曾保存过的 Wi‑Fi 网络，通常最适合查 SSID、BSSID、网络安全类型等</td>
+</tr>
+<tr>
+<td><code>com.apple.wifi-private-mac-networks.plist</code></td>
+<td>Wi‑Fi 私有 MAC 地址记录，保存网络与随机 MAC 的对应关系</td>
+</tr>
+<tr>
+<td><code>com.apple.wifi.plist</code></td>
+<td>系统 Wi‑Fi 配置、接口和相关网络参数</td>
+</tr>
+<tr>
+<td><code>com.apple.wifi-networks.plist</code></td>
+<td>部分取证软件使用的归并或显示名称，实际文件名可能不同</td>
+</tr>
+<tr>
+<td><code>com.apple.wifi-networks.plist.backup</code></td>
+<td>上述 Wi‑Fi 数据的备份副本</td>
+</tr>
+<tr>
+<td><code>com.apple.wifianalyticsd.plist</code></td>
+<td>Wi‑Fi 诊断、分析和故障记录，通常不是首选证据</td>
+</tr>
+<tr>
+<td><code>com.apple.control-center.WiFiModule.plist</code></td>
+<td>控制中心 Wi‑Fi 开关及界面状态，不是完整连接历史</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>可以知道<code>com.apple.wifi-private-mac-networks.plist</code>是我们所需要的<br>而刚好在取证大师里面的数据是错的❌ 不知道为什么<br>IPHONE 命名明显是热点<br><img src="fb104d87c8e6d0568142337a9a9ddea8.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+</blockquote>
+<ol start="28">
+<li>承上题，请列出这个连接的服务集识别码(SSID)?(请依照参赛材料中的原文作答，注意区分大小写、空格及符号)<blockquote>
+<p>这个提醒很明显了<br>承上题,所以就是<code>wanchai</code></p>
+</blockquote>
+</li>
+<li>承上题，请列出这个连接的登入金钥?<blockquote>
+<p>在做之前先了解一下<code>登入金钥</code>是个什么东东<br>原来就是简简单单的WIFI-KEY呀,呵呵<br>实不相瞒这题我用AI做的<br><img src="c5a6975af527a0e19d76c73db3f285f5.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+</blockquote>
+</li>
+<li>相册中有两张图像互换格式图片(gif)「IMG_0057.GIF」及「IMG_0062.GIF」，请指出由哪一个软件拍摄? <blockquote>
+</blockquote>
+</li>
+<li>曾经以空投(AirDrop)方式成功传送了文件到另外一个装置，以下哪一个陈述是正确的？  <blockquote>
+<p>在iPhone上，其实有一个存储用户人际互动数据的关键数据库文件var\mobile\Library\CoreDuet\People<br><img src="cd91963433da77cbbf87593f132d30ce.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>后缀是AirDrop 就是了<br>这里下了一个新的软件<code>DB.Browser.for.SQLite</code><br>PS:如何用这个软件查找数据   </p>
+</blockquote>
+</li>
+<li>点击上方的 “浏览数据(B)”。     </li>
+<li>在 Table（表）下拉框中选择要查询的表。    </li>
+<li>使用表格上方或下方的 Filter&#x2F;过滤输入框，输入关键词。      </li>
+<li>点击应用或按回车，结果会筛选出包含该内容的记录。    </li>
+<li><blockquote>
+<p>这里用到了AI解析<br> 这张照片曾经通过 AirDrop 传送过。数据库中通常不会保存文字 “AirDrop”，而是保存照片的分享时间，所以要用相关字段反查<br>具体原因：</p>
+</blockquote>
+</li>
+</ol>
+<ul>
+<li><code>ZASSET</code> 是照片和视频的主表，包含照片的基本信息。</li>
+<li><code>ZLASTSHAREDDATE</code> 表示该照片最近一次被分享的时间。</li>
+<li>NULL 表示没有记录分享时间；不为空的记录就是候选照片。</li>
+<li><code>ZFILENAME</code> 保存照片的原始文件名和扩展名。</li>
+<li>题目说只有一张符合条件，因此筛选出唯一的非空记录后，读取同一行的 ZFILENAME 即可。</li>
+</ul>
+<ol start="33">
+<li>时间解析<blockquote>
+<p>这个是苹果时间<br>解析方式不同于UNIX时间戳    </p>
+</blockquote>
+</li>
+<li>exif位置的解析<blockquote>
+<p>下载一个软件<code>ExifTool</code><br> 发现很强大,几乎图片所有的信息他都有 666!<br><img src="9c128dcf5ecba62ca2986bab2f7553c2.png" srcset="/img/loading.gif" lazyload alt="alt text">      </p>
+</blockquote>
+</li>
+<li>曾经通过网络浏览器「Safari」下载了多少个图片文件？  <blockquote>
+<p>这题可以很好的学习一下<code>DB Browser for SQLite</code>的用法<br>表名 <em><strong>ZADDITIONALASSETATTRIBUTES</strong></em><br><img src="ad98142a2d11057ee98f128827400696.png" srcset="/img/loading.gif" lazyload alt="alt text"><br>具体的解法我放在了<code>iOS-字段名英文拆词法</code>中</p>
+</blockquote>
+</li>
+<li>查找<code>「 IMG_0004.MOV」</code>曾被修改后再储存成另一个文件，该文件名称是?<blockquote>
+<p>这题可以继续巩固刚刚学到的知识</p>
+</blockquote>
+</li>
+</ol>
+<p><code>Z_PK 是两张表之间的钥匙</code><br>这道题需要的信息分居两张表：</p>
+<table>
+<thead>
+<tr>
+<th>你要的信息</th>
+<th>在哪张表</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>原始文件名（IMG_0004.mov）</td>
+<td>ZADDITIONALASSETATTRIBUTES（属性表）</td>
+</tr>
+<tr>
+<td>当前文件名（IMG_0085.mov）</td>
+<td>ZASSET（主表）</td>
+</tr>
+<tr>
+<td>PS : <strong>Z_PK &#x3D; Primary Key（主键）</strong></td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<ol>
+<li>先在<code>ZADDITIONALASSETATTRIBUTES</code>里面搜索 IMG_0004.MOV 找到他的PK值    </li>
+<li>然后在<code>ZASSET</code>使用SQL语句搜索     </li>
+<li>SELECT ZFILENAME, ZKIND, ZDURATION FROM ZASSET;</li>
+</ol>
+</blockquote>
+<ol start="43">
+<li>曾经通过人工智能聊天APP “POE”查询一个问题，请列出这个问题的完整句子？<blockquote>
+<p>这个思路很不错     </p>
+<ol>
+<li>先全局搜索POE</li>
+</ol>
+</blockquote>
+</li>
+<li><img src="17f5bbc6353c788259742ccaa69b9027.png" srcset="/img/loading.gif" lazyload alt="alt text"><blockquote>
+<p>这里二货了 ， 只需要有频道列表就是关注了</p>
+</blockquote>
+</li>
+<li>哈希值求解工具的运用<blockquote>
+<p>D:\MYOS\ToolSet\HashCal\ 路径在这里！<br>然后就简单了！！！       </p>
+</blockquote>
+</li>
+<li><ul>
+<li><ol start="58">
+<li><blockquote>
+<p>这几题都用到了对DB库的运用</p>
+</blockquote>
+</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>第一题直接搜索<code>85254961408@s.whatsapp.net</code>发现是<code>陳民浩</code></li>
+<li>然后从三个检材中都看不出来什么</li>
+<li>试着直接搜索陳民浩 发现在<code>梁燕玲</code>的检材中发现他被移除<code>Sportsmen</code><br>   <img src="55afc2915c8a25ce4d4f0a149c24a1c0.png" srcset="/img/loading.gif" lazyload alt="alt text"></li>
+<li>第二题需要在取证大师里面直接搜索<code>投票</code></li>
+<li>第三题需要在DB库里面先筛选群聊的ID     </li>
+<li>然后再根据上下文得出投票的type</li>
+<li>最后由isfromme得出投了几次<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs SQL"><span class="hljs-keyword">SELECT</span> <span class="hljs-operator">*</span> <span class="hljs-keyword">FROM</span> ZWAMESSAGE <br><span class="hljs-keyword">WHERE</span> ZISFROMME <span class="hljs-operator">=</span> <span class="hljs-number">1</span> <span class="hljs-keyword">AND</span><br>ZMESSAGETYPE <span class="hljs-operator">=</span> <span class="hljs-number">46</span>;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<ol start="61">
+<li>承上题，该群组的建立时间是什么？<blockquote>
+<p>有时候要用巧劲<br>这里可以直接看群聊记录 （捂脸🤦‍♂️）<br><img src="b853e65e0da01db448f621e54030cbf7.png" srcset="/img/loading.gif" lazyload alt="alt text"></p>
+</blockquote>
+</li>
+<li>查找苹果手机照片经纬度<blockquote>
+<p>这一题用exiftool找不到<br>退而求其次，使用photos.SPILTE 也可以找到   </p>
+</blockquote>
+</li>
+<li>查找PDF文件的内容<blockquote>
+<p>点开之后没看到东西<br>原来他们两是隐写术高手<br>直接复制粘贴即解</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+<p><em><strong>这一块是个新的知识点</strong></em><br>77. 存储介质取证 &#x2F; 磁盘取证 初学 </p>
+<blockquote>
+<p>想查看有几个分区 easy！<br>用美亚里面现有的<code>D:\MYOS\ToolSet\DiskMountTool\DiskMount.exe</code><br>打开后直接挂载 只读<br>win+X 查看磁盘管理<br>有几个色块就是有几个分区<br>84. 查看挂载U盘里的文件的加密算法<br>第一步：参考<code>https://mei-you-qian.github.io/2025/11/21/2025%E7%BE%8E%E4%BA%9A%E6%9D%AF-%E8%B5%84%E6%A0%BC%E8%B5%9B/</code>里面的挂载方式<br>第二步：发现虚拟机里面的桌面有一串密码，试了一下发现是压缩包的密码<br>第三步：打开后发现有一个容器，伴随着VeraCrypt的英文<br>第四步：用VeraCrypt打开，发现要密码，于是尝试密钥文件<br>但是找不到！<br><img src="18733ad26f08bd4396f6cda14c7c08ce.png" srcset="/img/loading.gif" lazyload alt="这里显示所有隐藏文件后发现了`recycle`"><br>86. 这一题问<code>WinPE 启动后，系统会自动将核心映像挂载到哪个驱动器？</code><br>在虚拟机里面输入CMD，发现是系统是运行在X:    </p>
+</blockquote>
+
                 
               </div>
             
@@ -412,6 +625,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81-%E7%BE%8E%E4%BA%9A%E6%9D%AF/" class="print-no-link">#电子取证 美亚杯</a>
+      
+    </div>
   
 </div>
 
@@ -421,8 +641,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSRF(跨站请求伪造)漏洞的学习</div>
-      <div>https://harden13131.github.io/2026/09/07/CSRF-跨站请求伪造-漏洞的学习/</div>
+      <div>25美亚杯资格赛 学习and复现</div>
+      <div>https://harden13131.github.io/2026/09/10/25美亚杯资格赛-学习and复现/</div>
     </div>
     <div class="license-meta">
       
@@ -434,7 +654,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月7日</div>
+          <div>2026年9月10日</div>
         </div>
       
       
@@ -466,9 +686,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/" title="25美亚杯资格赛 学习and复现">
+                      <a href="../../15/%E8%B6%85%E7%BA%A7%E5%8F%96%E8%AF%81%E5%A4%A7%E5%B8%88%E8%BF%9E%E6%8E%A5AI%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BD%9C%E4%B8%9A/" title="超级取证大师连接AI自动化作业">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">25美亚杯资格赛 学习and复现</span>
+                        <span class="hidden-mobile">超级取证大师连接AI自动化作业</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -476,8 +696,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="../../../08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/" title="Docker是个啥？">
-                        <span class="hidden-mobile">Docker是个啥？</span>
+                      <a href="../../07/CSRF-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0-%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0/" title="CSRF(跨站请求伪造)漏洞的学习">
+                        <span class="hidden-mobile">CSRF(跨站请求伪造)漏洞的学习</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

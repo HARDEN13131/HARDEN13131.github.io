@@ -19,21 +19,24 @@
   <meta name="author" content="画竹子的熊猫">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
-<meta property="og:title" content="CSRF(跨站请求伪造)漏洞的学习">
-<meta property="og:url" content="https://harden13131.github.io/2026/09/07/CSRF-%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0-%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AD%A6%E4%B9%A0/index.html">
+    <meta name="description" content="iOS 数据库字段名英文拆词法 用途：用英文语义判断”这个表&#x2F;这个字段是干什么的”，从而在陌生数据库里找对答案所在，而不是靠全库搜索碰运气。依据：第十一届美亚杯个人赛 Photos.sqlite 实战整理（2026-09-16）   一、先认前缀：Z   片段 含义    Z Core Data 强制前缀。Objective-C 的 Core Data 框架生成 SQLite 时，**所">
+<meta property="og:type" content="article">
+<meta property="og:title" content="iOS-字段名英文拆词法">
+<meta property="og:url" content="https://harden13131.github.io/2026/09/16/iOS-%E5%AD%97%E6%AE%B5%E5%90%8D%E8%8B%B1%E6%96%87%E6%8B%86%E8%AF%8D%E6%B3%95/index.html">
 <meta property="og:site_name" content="Harden的个人博客">
+<meta property="og:description" content="iOS 数据库字段名英文拆词法 用途：用英文语义判断”这个表&#x2F;这个字段是干什么的”，从而在陌生数据库里找对答案所在，而不是靠全库搜索碰运气。依据：第十一届美亚杯个人赛 Photos.sqlite 实战整理（2026-09-16）   一、先认前缀：Z   片段 含义    Z Core Data 强制前缀。Objective-C 的 Core Data 框架生成 SQLite 时，**所">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-09-07T02:40:40.000Z">
-<meta property="article:modified_time" content="2026-09-07T02:40:40.617Z">
+<meta property="article:published_time" content="2026-09-16T08:51:29.000Z">
+<meta property="article:modified_time" content="2026-09-16T08:52:15.070Z">
 <meta property="article:author" content="画竹子的熊猫">
+<meta property="article:tag" content="电子取证">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>CSRF(跨站请求伪造)漏洞的学习 - Harden的个人博客</title>
+  <title>iOS-字段名英文拆词法 - Harden的个人博客</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -326,7 +329,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="CSRF(跨站请求伪造)漏洞的学习"></span>
+            <span id="subtitle" data-typed-text="iOS-字段名英文拆词法"></span>
           
         </div>
 
@@ -337,8 +340,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2026-09-07 10:40" pubdate>
-          2026年9月7日 上午
+        <time datetime="2026-09-16 16:51" pubdate>
+          2026年9月16日 下午
         </time>
       </span>
     
@@ -349,7 +352,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          2.4k 字
         
       </span>
     
@@ -360,7 +363,7 @@
         
         
         
-          1 分钟
+          20 分钟
         
       </span>
     
@@ -399,12 +402,227 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">CSRF(跨站请求伪造)漏洞的学习</h1>
+            <h1 id="seo-header">iOS-字段名英文拆词法</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="iOS-数据库字段名英文拆词法"><a href="#iOS-数据库字段名英文拆词法" class="headerlink" title="iOS 数据库字段名英文拆词法"></a>iOS 数据库字段名英文拆词法</h1><blockquote>
+<p><strong>用途</strong>：用英文语义判断”这个表&#x2F;这个字段是干什么的”，从而在陌生数据库里<strong>找对答案所在</strong>，而不是靠全库搜索碰运气。<br>依据：第十一届美亚杯个人赛 <code>Photos.sqlite</code> 实战整理（2026-09-16）</p>
+</blockquote>
+<hr>
+<h2 id="一、先认前缀：Z"><a href="#一、先认前缀：Z" class="headerlink" title="一、先认前缀：Z"></a>一、先认前缀：<code>Z</code></h2><table>
+<thead>
+<tr>
+<th>片段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Z</strong></td>
+<td>Core Data 强制前缀。Objective-C 的 Core Data 框架生成 SQLite 时，**所有表名、所有列名一律加 <code>Z</code>**。</td>
+</tr>
+</tbody></table>
+<p><strong>看到 <code>Z</code> 开头，就知道这是苹果系（iOS&#x2F;macOS）的库。</strong><br>这是最快的识别标志——一眼判断出检材来自苹果生态，而不是安卓的普通 SQLite。</p>
+<blockquote>
+<p>补充：Core Data 里 <code>Z_PK</code> 是主键，<code>Z_ENT</code> 是实体类型，<code>Z_OPT</code> 是乐观锁版本号。看到这三个就知道是 Core Data 标准结构。</p>
+</blockquote>
+<hr>
+<h2 id="二、表名拆解实战：ZADDITIONALASSETATTRIBUTES"><a href="#二、表名拆解实战：ZADDITIONALASSETATTRIBUTES" class="headerlink" title="二、表名拆解实战：ZADDITIONALASSETATTRIBUTES"></a>二、表名拆解实战：<code>ZADDITIONALASSETATTRIBUTES</code></h2><table>
+<thead>
+<tr>
+<th>片段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Z</td>
+<td>Core Data 前缀（见上）</td>
+</tr>
+<tr>
+<td><strong>ADDITIONAL</strong></td>
+<td>附加的、补充的</td>
+</tr>
+<tr>
+<td><strong>ASSET</strong></td>
+<td><strong>资产</strong> —— 苹果 Photos 框架术语：相册里的一张照片 &#x2F; 一个视频 &#x3D; 一个 asset</td>
+</tr>
+<tr>
+<td><strong>ATTRIBUTES</strong></td>
+<td>属性</td>
+</tr>
+</tbody></table>
+<p>→ <strong>「资产的附加属性表」</strong></p>
+<p><strong>关键点在 ADDITIONAL + ATTRIBUTES</strong>：它<strong>不是</strong>独立实体，而是 <code>ZASSET</code> 的属性扩展。<br>一张照片在 <code>ZASSET</code> 有一行，在这张表<strong>恰好也一行</strong>（靠 <code>Z_PK</code> 关联）。</p>
+<p><strong>这一点决定了它能用来计数。</strong></p>
+<hr>
+<h2 id="三、字段名拆解实战：ZIMPORTEDBYDISPLAYNAME"><a href="#三、字段名拆解实战：ZIMPORTEDBYDISPLAYNAME" class="headerlink" title="三、字段名拆解实战：ZIMPORTEDBYDISPLAYNAME"></a>三、字段名拆解实战：<code>ZIMPORTEDBYDISPLAYNAME</code></h2><table>
+<thead>
+<tr>
+<th>片段</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Z</td>
+<td>Core Data 前缀</td>
+</tr>
+<tr>
+<td><strong>IMPORTED</strong></td>
+<td>被导入（import 的过去分词）</td>
+</tr>
+<tr>
+<td><strong>BY</strong></td>
+<td>由……</td>
+</tr>
+<tr>
+<td><strong>DISPLAY NAME</strong></td>
+<td><strong>显示名称</strong> —— 用户看得懂的名字（”Safari”），区别于机器用的 bundle id</td>
+</tr>
+</tbody></table>
+<p>→ <strong>「由哪个 App 的显示名导入的」</strong></p>
+<h3 id="语义链条（第-41-题的关键）"><a href="#语义链条（第-41-题的关键）" class="headerlink" title="语义链条（第 41 题的关键）"></a>语义链条（第 41 题的关键）</h3><figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs elm">用户在 <span class="hljs-type">Safari</span> 里点<span class="hljs-string">&quot;下载图片&quot;</span><br>        ↓<br>系统把图片存进相册（这一步在系统里叫 <span class="hljs-keyword">import</span>）<br>        ↓<br>这张 asset 的 <span class="hljs-type">IMPORTED</span> <span class="hljs-type">BY</span> 记为 <span class="hljs-string">&quot;Safari&quot;</span><br></code></pre></td></tr></table></figure>
+
+<p><strong>题目的”下载”，在系统里落成的动作是”导入”。</strong><br>盯着 <code>download</code> 找不到，正确的动词是 <strong>imported</strong>。</p>
+<hr>
+<h2 id="四、通用词汇表（可迁移，背下来）"><a href="#四、通用词汇表（可迁移，背下来）" class="headerlink" title="四、通用词汇表（可迁移，背下来）"></a>四、通用词汇表（可迁移，背下来）</h2><h3 id="表性质判断"><a href="#表性质判断" class="headerlink" title="表性质判断"></a>表性质判断</h3><table>
+<thead>
+<tr>
+<th>看到</th>
+<th>判断</th>
+<th>能否计数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>表尾 <code>ATTRIBUTES</code> &#x2F; <code>PROPERTIES</code> &#x2F; <code>INFO</code></td>
+<td>属性扩展表，与主表一对一</td>
+<td>✅ <strong>可</strong></td>
+</tr>
+<tr>
+<td>含 <code>CLOUD</code></td>
+<td>云端副本，与本地<strong>重复</strong></td>
+<td>❌ 会重复</td>
+</tr>
+<tr>
+<td>含 <code>TRANSACTION</code> &#x2F; <code>LOG</code> &#x2F; <code>HISTORY</code> &#x2F; <code>JOURNAL</code> &#x2F; <code>EVENT</code></td>
+<td>日志表，一行 &#x3D; 一次事件</td>
+<td>❌ 行数膨胀</td>
+</tr>
+<tr>
+<td>含 <code>TEMP</code> &#x2F; <code>CACHE</code></td>
+<td>临时&#x2F;缓存</td>
+<td>❌ 不稳定</td>
+</tr>
+<tr>
+<td>含 <code>DELETED</code> &#x2F; <code>TRASH</code> &#x2F; <code>TOMBSTONE</code></td>
+<td>已删除记录</td>
+<td>⚠️ 视题目而定</td>
+</tr>
+<tr>
+<td>含 <code>MASTER</code></td>
+<td>主表</td>
+<td>✅ 可</td>
+</tr>
+</tbody></table>
+<h3 id="字段性质判断"><a href="#字段性质判断" class="headerlink" title="字段性质判断"></a>字段性质判断</h3><table>
+<thead>
+<tr>
+<th>看到</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>尾 <code>DISPLAYNAME</code> &#x2F; <code>TITLE</code> &#x2F; <code>NAME</code></td>
+<td><strong>给人看</strong>的名字（”Safari”、”微信”）</td>
+</tr>
+<tr>
+<td>尾 <code>IDENTIFIER</code> &#x2F; <code>UUID</code> &#x2F; <code>HASH</code> &#x2F; <code>ID</code></td>
+<td><strong>给机器看</strong>的 ID（<code>com.apple.mobilesafari</code>）</td>
+</tr>
+<tr>
+<td>含 <code>IMPORTED BY</code> &#x2F; <code>SOURCE</code> &#x2F; <code>ORIGIN</code></td>
+<td><strong>来源</strong>（哪个 App &#x2F; 哪来的）</td>
+</tr>
+<tr>
+<td>含 <code>ORIGINAL</code></td>
+<td>修改前 &#x2F; 导入前的<strong>原始值</strong></td>
+</tr>
+<tr>
+<td>含 <code>DATE</code> &#x2F; <code>TIME</code> &#x2F; <code>TIMESTAMP</code></td>
+<td>时间戳（注意单位：秒还是毫秒）</td>
+</tr>
+<tr>
+<td>含 <code>COUNT</code> &#x2F; <code>NUMBER</code></td>
+<td>计数字段</td>
+</tr>
+<tr>
+<td>以 <code>IS</code> &#x2F; <code>HAS</code> 开头（如 <code>ZHASADJUSTMENTS</code>、<code>ZTRASHEDSTATE</code>）</td>
+<td><strong>布尔标志位</strong>（1&#x3D;是，0&#x3D;否）</td>
+</tr>
+<tr>
+<td>含 <code>BUNDLEID</code></td>
+<td>产生这个记录的应用包名</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="五、判据：遇到”数一数有多少个-X”的题，怎么办"><a href="#五、判据：遇到”数一数有多少个-X”的题，怎么办" class="headerlink" title="五、判据：遇到”数一数有多少个 X”的题，怎么办"></a>五、判据：遇到”数一数有多少个 X”的题，怎么办</h2><p>按顺序自问：</p>
+<ol>
+<li><strong>X 是”实体”还是”事件”？</strong><ul>
+<li>实体（照片、消息、联系人）→ 去<strong>主表&#x2F;属性表</strong>数</li>
+<li>事件（操作、变更、访问）→ 那是日志，别拿它当实体数</li>
+</ul>
+</li>
+<li><strong>这张表与主表是一对一还是一对多？</strong><ul>
+<li>一对一（属性表）→ 行数 &#x3D; 实体数 ✅</li>
+<li>一对多（日志表）→ 一个实体可能有多行 ❌</li>
+</ul>
+</li>
+<li><strong>有没有云端副本？</strong><ul>
+<li>有 <code>CLOUD</code> 字样的表可能是同一批数据的第二份，别和本地相加</li>
+</ul>
+</li>
+<li><strong>要不要过滤类型？</strong><ul>
+<li>数”图片”要排除视频（<code>ZKIND = 0</code>）-&gt;这部分在前面的<code>美亚杯</code>一题中提到</li>
+<li>数”未删除”要排除回收站（<code>ZTRASHEDSTATE = 0</code>）</li>
+</ul>
+</li>
+</ol>
+<hr>
+<h2 id="六、完整例子回顾：第-41-题"><a href="#六、完整例子回顾：第-41-题" class="headerlink" title="六、完整例子回顾：第 41 题"></a>六、完整例子回顾：第 41 题</h2><p>题目：通过 Safari 下载了多少个图片文件？（答案 2）</p>
+<table>
+<thead>
+<tr>
+<th>表.列</th>
+<th>英文拆解</th>
+<th>判定</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>ZADDITIONALASSETATTRIBUTES.ZIMPORTEDBYDISPLAYNAME</code></td>
+<td>资产属性表 · 由谁导入的显示名</td>
+<td>✅ <strong>正解</strong></td>
+</tr>
+<tr>
+<td><code>ZADDITIONALASSETATTRIBUTES.ZIMPORTEDBYBUNDLEIDENTIFIER</code></td>
+<td>同上，但用包名</td>
+<td>同一事实的另一种写法</td>
+</tr>
+<tr>
+<td><code>ZCLOUDMASTER.ZIMPORTEDBYDISPLAYNAME</code></td>
+<td>云端主表</td>
+<td>⚠️ 云端副本，会重复</td>
+</tr>
+<tr>
+<td><code>ATRANSACTIONSTRING.ZNAME</code></td>
+<td>变更事务表</td>
+<td>❌ 日志，一行 &#x3D; 一次事件</td>
+</tr>
+</tbody></table>
+<p><strong>全库搜 Safari 各自都命中 2，简单相加 &#x3D; 6，正确答案 &#x3D; 2。</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs sql"><span class="hljs-comment">-- 正确写法</span><br><span class="hljs-keyword">SELECT</span> <span class="hljs-built_in">COUNT</span>(<span class="hljs-operator">*</span>)<br><span class="hljs-keyword">FROM</span> ZASSET a<br><span class="hljs-keyword">JOIN</span> ZADDITIONALASSETATTRIBUTES <span class="hljs-keyword">at</span> <span class="hljs-keyword">ON</span> at.Z_PK <span class="hljs-operator">=</span> a.ZADDITIONALATTRIBUTES<br><span class="hljs-keyword">WHERE</span> at.ZIMPORTEDBYDISPLAYNAME <span class="hljs-operator">=</span> <span class="hljs-string">&#x27;Safari&#x27;</span><br>  <span class="hljs-keyword">AND</span> a.ZKIND <span class="hljs-operator">=</span> <span class="hljs-number">0</span>           <span class="hljs-comment">-- 0=照片，1=视频</span><br>  <span class="hljs-keyword">AND</span> a.ZTRASHEDSTATE <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;  <span class="hljs-comment">-- 排除最近删除 </span><br></code></pre></td></tr></table></figure>
+<h2 id="PS：这部分还有待学习-DOGE"><a href="#PS：这部分还有待学习-DOGE" class="headerlink" title="PS：这部分还有待学习(DOGE)"></a>PS：<code>这部分还有待学习</code>(DOGE)</h2><h2 id="七、一句话总结"><a href="#七、一句话总结" class="headerlink" title="七、一句话总结"></a>七、一句话总结</h2><p><strong>表名告诉你”这是什么东西的集合”，字段名告诉你”这个属性是什么意思”。</strong></p>
+<p>看懂英文，就知道该数哪一列——这比全库搜索靠谱得多。</p>
+
                 
               </div>
             
@@ -412,6 +630,13 @@
             <div>
               <div class="post-metas my-3">
   
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="../../../../tags/%E7%94%B5%E5%AD%90%E5%8F%96%E8%AF%81/" class="print-no-link">#电子取证</a>
+      
+    </div>
   
 </div>
 
@@ -421,8 +646,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>CSRF(跨站请求伪造)漏洞的学习</div>
-      <div>https://harden13131.github.io/2026/09/07/CSRF-跨站请求伪造-漏洞的学习/</div>
+      <div>iOS-字段名英文拆词法</div>
+      <div>https://harden13131.github.io/2026/09/16/iOS-字段名英文拆词法/</div>
     </div>
     <div class="license-meta">
       
@@ -434,7 +659,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2026年9月7日</div>
+          <div>2026年9月16日</div>
         </div>
       
       
@@ -466,18 +691,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../10/25%E7%BE%8E%E4%BA%9A%E6%9D%AF%E8%B5%84%E6%A0%BC%E8%B5%9B-%E5%AD%A6%E4%B9%A0and%E5%A4%8D%E7%8E%B0/" title="25美亚杯资格赛 学习and复现">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">25美亚杯资格赛 学习and复现</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../../../08/24/Docker%E6%98%AF%E4%B8%AA%E5%95%A5%EF%BC%9F/" title="Docker是个啥？">
-                        <span class="hidden-mobile">Docker是个啥？</span>
+                      <a href="../../15/%E8%B6%85%E7%BA%A7%E5%8F%96%E8%AF%81%E5%A4%A7%E5%B8%88%E8%BF%9E%E6%8E%A5AI%E8%87%AA%E5%8A%A8%E5%8C%96%E4%BD%9C%E4%B8%9A/" title="超级取证大师连接AI自动化作业">
+                        <span class="hidden-mobile">超级取证大师连接AI自动化作业</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
